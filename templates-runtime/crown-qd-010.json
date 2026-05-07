@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:09:24.816Z",
+  "schemaVersion": "1.0.0",
   "shape": "crown",
   "points": [
     {
@@ -159,5 +159,16 @@
       "y": 163
     }
   ],
+  "capturedAt": "2026-05-07T01:09:24.816Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:crown#4548823860903936"
 }

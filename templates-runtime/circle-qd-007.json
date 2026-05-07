@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:07:49.707Z",
+  "schemaVersion": "1.0.0",
   "shape": "circle",
   "points": [
     {
@@ -95,5 +95,16 @@
       "y": 3
     }
   ],
+  "capturedAt": "2026-05-07T01:07:49.707Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:circle#5984448002654208"
 }

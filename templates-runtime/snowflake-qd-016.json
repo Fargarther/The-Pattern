@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:10:41.747Z",
+  "schemaVersion": "1.0.0",
   "shape": "snowflake",
   "points": [
     {
@@ -167,5 +167,16 @@
       "y": 8
     }
   ],
+  "capturedAt": "2026-05-07T01:10:41.747Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:snowflake#6247484349218816"
 }

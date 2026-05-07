@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:09:34.495Z",
+  "schemaVersion": "1.0.0",
   "shape": "hammer",
   "points": [
     {
@@ -131,5 +131,16 @@
       "y": 54
     }
   ],
+  "capturedAt": "2026-05-07T01:09:34.495Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:hammer#5183539328843776"
 }

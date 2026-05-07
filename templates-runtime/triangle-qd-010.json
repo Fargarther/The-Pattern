@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:07:41.967Z",
+  "schemaVersion": "1.0.0",
   "shape": "triangle",
   "points": [
     {
@@ -119,5 +119,16 @@
       "y": 120
     }
   ],
+  "capturedAt": "2026-05-07T01:07:41.967Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:triangle#6648125995352064"
 }

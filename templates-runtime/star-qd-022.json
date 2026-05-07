@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:08:28.772Z",
+  "schemaVersion": "1.0.0",
   "shape": "star",
   "points": [
     {
@@ -163,5 +163,16 @@
       "y": 208
     }
   ],
+  "capturedAt": "2026-05-07T01:08:28.772Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:star#5966115358375936"
 }

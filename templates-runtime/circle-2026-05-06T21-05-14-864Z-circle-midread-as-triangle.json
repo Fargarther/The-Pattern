@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-06T21:05:14.864Z",
+  "schemaVersion": "1.0.0",
   "shape": "circle",
   "points": [
     {
@@ -391,6 +391,17 @@
       "y": 232.5
     }
   ],
+  "capturedAt": "2026-05-06T21:05:14.864Z",
+  "captureContext": {
+    "device": "unknown-pre-schema",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "stroke": {
     "points": [
       {

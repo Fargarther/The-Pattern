@@ -70,11 +70,21 @@ export default defineConfig({
             await fs.mkdir(TEMPLATES_DIR, { recursive: true });
             const ts = new Date().toISOString().replace(/[:.]/g, '-');
             const filename = `${shape}-${ts}.json`;
+            // Schema 1.0.0 — see src/sre/template-schema.ts
             const out = {
-              savedAt: new Date().toISOString(),
+              schemaVersion: '1.0.0',
               shape,
               points: payload.points,
-              stroke: payload.stroke ?? null,
+              capturedAt: new Date().toISOString(),
+              captureContext: payload.captureContext ?? {
+                device: 'unknown',
+                os: 'unknown',
+                viewport: { w: 0, h: 0 },
+                pixelRatio: 1,
+                inputType: 'unknown',
+              },
+              ...(payload.stroke ? { stroke: payload.stroke } : {}),
+              importedFrom: 'ui',
             };
             await fs.writeFile(
               path.join(TEMPLATES_DIR, filename),

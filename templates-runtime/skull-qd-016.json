@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:09:15.195Z",
+  "schemaVersion": "1.0.0",
   "shape": "skull",
   "points": [
     {
@@ -275,5 +275,16 @@
       "y": 51
     }
   ],
+  "capturedAt": "2026-05-07T01:09:15.195Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:skull#4651751795851264"
 }

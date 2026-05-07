@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:11:09.634Z",
+  "schemaVersion": "1.0.0",
   "shape": "flask",
   "points": [
     {
@@ -111,5 +111,16 @@
       "y": 0
     }
   ],
+  "capturedAt": "2026-05-07T01:11:09.634Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:wine bottle#6040174666448896"
 }

@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:10:24.775Z",
+  "schemaVersion": "1.0.0",
   "shape": "wave",
   "points": [
     {
@@ -143,5 +143,16 @@
       "y": 12
     }
   ],
+  "capturedAt": "2026-05-07T01:10:24.775Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:ocean#6535597285965824"
 }

@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:10:54.000Z",
+  "schemaVersion": "1.0.0",
   "shape": "eye",
   "points": [
     {
@@ -171,5 +171,16 @@
       "y": 75
     }
   ],
+  "capturedAt": "2026-05-07T01:10:54.000Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:eye#6718938312343552"
 }

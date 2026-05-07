@@ -32,6 +32,7 @@ import {
   getRuntimeTemplateCount,
   setRuntimeTemplates,
 } from '../sre/templates.js';
+import { detectOs, type CaptureContext } from '../sre/template-schema.js';
 import type { ShapeName } from '../sre/types.js';
 
 const KNOWN_SHAPE_NAMES: ReadonlySet<string> = new Set<ShapeName>([
@@ -586,6 +587,25 @@ async function saveCurrentTemplate(): Promise<void> {
     setSaveStatus('stroke too short', 'error');
     return;
   }
+  // Pick the dominant pointer type from the captured strokes — touch +
+  // stylus + mouse can mix in theory, but in practice one type dominates.
+  const ptCounts: Record<string, number> = { touch: 0, pen: 0, mouse: 0 };
+  for (const s of allStrokes) {
+    for (const p of s.points) {
+      const t = p.pointerType ?? 'mouse';
+      ptCounts[t] = (ptCounts[t] ?? 0) + 1;
+    }
+  }
+  const dominantPtType = Object.entries(ptCounts).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'mouse';
+  const inputType: CaptureContext['inputType'] =
+    dominantPtType === 'pen' ? 'stylus' : dominantPtType === 'touch' ? 'touch' : 'mouse';
+  const captureContext: CaptureContext = {
+    device: navigator.userAgent,
+    os: detectOs(navigator.userAgent),
+    viewport: { w: window.innerWidth, h: window.innerHeight },
+    pixelRatio: window.devicePixelRatio || 1,
+    inputType,
+  };
   setSaveStatus('saving template…', 'idle');
   try {
     const res = await fetch('/api/save-template', {
@@ -595,6 +615,7 @@ async function saveCurrentTemplate(): Promise<void> {
         shape: label,
         points,
         stroke: allStrokes[0] ?? null,
+        captureContext,
       }),
     });
     const result = (await res.json()) as { ok: boolean; filename?: string; error?: string };
@@ -639,15 +660,33 @@ async function loadRuntimeTemplates(): Promise<void> {
     const res = await fetch('/api/list-templates');
     const result = (await res.json()) as {
       ok: boolean;
-      templates?: Array<{ shape: string; points: NormalizedPoint[] }>;
+      templates?: Array<{ shape: string; points: NormalizedPoint[]; schemaVersion?: string }>;
     };
     if (!result.ok || !result.templates) return;
     const built: QTemplate[] = [];
+    let skippedSchema = 0;
+    let skippedShape = 0;
     for (const t of result.templates) {
+      // Schema-version gate per template-schema.ts. Mismatched majors → drop
+      // with a warning. Files predating the schema (no `schemaVersion`) are
+      // treated as legacy and accepted only for the current major to keep
+      // backward compat during the transition; once all templates carry
+      // metadata we can tighten this.
+      const ver = t.schemaVersion;
+      if (ver && !ver.startsWith('1.')) {
+        skippedSchema++;
+        continue;
+      }
       if (!KNOWN_SHAPE_NAMES.has(t.shape) || !Array.isArray(t.points) || t.points.length < 4) {
+        skippedShape++;
         continue;
       }
       built.push(buildTemplate(t.shape as ShapeName, t.points, t.shape));
+    }
+    if (skippedSchema > 0) {
+      console.warn(
+        `[templates] dropped ${skippedSchema} templates with incompatible schemaVersion`,
+      );
     }
     setRuntimeTemplates(built);
     updateStats([

@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:09:00.988Z",
+  "schemaVersion": "1.0.0",
   "shape": "crescent",
   "points": [
     {
@@ -127,5 +127,16 @@
       "y": 0
     }
   ],
+  "capturedAt": "2026-05-07T01:09:00.988Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:moon#5359957694218240"
 }

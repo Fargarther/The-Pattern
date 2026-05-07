@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:08:51.141Z",
+  "schemaVersion": "1.0.0",
   "shape": "sun",
   "points": [
     {
@@ -267,5 +267,16 @@
       "y": 69
     }
   ],
+  "capturedAt": "2026-05-07T01:08:51.141Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:sun#4913952049856512"
 }

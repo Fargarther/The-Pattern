@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:10:02.123Z",
+  "schemaVersion": "1.0.0",
   "shape": "boomerang",
   "points": [
     {
@@ -99,5 +99,16 @@
       "y": 4
     }
   ],
+  "capturedAt": "2026-05-07T01:10:02.123Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:boomerang#4786026952261632"
 }

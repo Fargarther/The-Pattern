@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:08:20.129Z",
+  "schemaVersion": "1.0.0",
   "shape": "diamond",
   "points": [
     {
@@ -115,5 +115,16 @@
       "y": 77
     }
   ],
+  "capturedAt": "2026-05-07T01:08:20.129Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:diamond#6117229147979776"
 }

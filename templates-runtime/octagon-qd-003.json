@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:08:12.206Z",
+  "schemaVersion": "1.0.0",
   "shape": "octagon",
   "points": [
     {
@@ -83,5 +83,16 @@
       "y": 1
     }
   ],
+  "capturedAt": "2026-05-07T01:08:12.206Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:octagon#4670462774738944"
 }

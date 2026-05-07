@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:09:53.658Z",
+  "schemaVersion": "1.0.0",
   "shape": "hourglass",
   "points": [
     {
@@ -87,5 +87,16 @@
       "y": 28
     }
   ],
+  "capturedAt": "2026-05-07T01:09:53.658Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:hourglass#4505398188965888"
 }

@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:09:44.070Z",
+  "schemaVersion": "1.0.0",
   "shape": "bolt",
   "points": [
     {
@@ -87,5 +87,16 @@
       "y": 3
     }
   ],
+  "capturedAt": "2026-05-07T01:09:44.070Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:lightning#5590091005165568"
 }

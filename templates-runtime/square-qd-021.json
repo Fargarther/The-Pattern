@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:07:55.833Z",
+  "schemaVersion": "1.0.0",
   "shape": "square",
   "points": [
     {
@@ -103,5 +103,16 @@
       "y": 79
     }
   ],
+  "capturedAt": "2026-05-07T01:07:55.833Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:square#4577280049283072"
 }

@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:10:17.027Z",
+  "schemaVersion": "1.0.0",
   "shape": "flame",
   "points": [
     {
@@ -463,5 +463,16 @@
       "y": 182
     }
   ],
+  "capturedAt": "2026-05-07T01:10:17.027Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:campfire#6417327744614400"
 }

@@ -1,5 +1,5 @@
 {
-  "savedAt": "2026-05-07T01:08:03.321Z",
+  "schemaVersion": "1.0.0",
   "shape": "hexagon",
   "points": [
     {
@@ -131,5 +131,16 @@
       "y": 50
     }
   ],
+  "capturedAt": "2026-05-07T01:08:03.321Z",
+  "captureContext": {
+    "device": "quickdraw",
+    "os": "unknown",
+    "viewport": {
+      "w": 0,
+      "h": 0
+    },
+    "pixelRatio": 1,
+    "inputType": "mouse"
+  },
   "importedFrom": "quickdraw:hexagon#4521342512660480"
 }
