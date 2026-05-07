@@ -661,6 +661,16 @@ export function recognizePlusSign(f: ShapeFeatures): number {
     if (avgTop4 > (110 * Math.PI) / 180) return 0; // 110° in radians
   }
 
+  // Balance check — distinguishes plus from arrows (which also have
+  // ~90° corners but unbalanced sign distribution). A real plus has
+  // 4 strong positives + 4 strong negatives (one per corner, perfectly
+  // balanced). An arrow has ~4-5 strong positives but only 1-2 strong
+  // negatives at the head shoulders. Reject when the imbalance is > 1.
+  const sharpThresh = Math.PI / 4; // 45°
+  const strongPos = f.cornerSignedAngles.filter((a) => a > sharpThresh).length;
+  const strongNeg = f.cornerSignedAngles.filter((a) => a < -sharpThresh).length;
+  if (Math.abs(strongPos - strongNeg) > 1) return 0;
+
   return 0.8;
 }
 
