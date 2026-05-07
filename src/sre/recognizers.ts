@@ -614,8 +614,12 @@ export function recognizeHourglass(f: ShapeFeatures): number {
   if (Math.abs(f.totalSignedAngle) > Math.PI * 0.5) return 0;
 
   // Elevated absolute total turn (~540° for ideal X-cross; real human
-  // hourglasses dip as low as ~1.1×2π).
+  // hourglasses dip as low as ~1.1×2π). Upper cap at 2.4×2π rejects
+  // pentagrams (which traverse ~2.74×2π via 5 corners of ~144° each
+  // plus smooth segments) — pentagram has the same 2-pos-2-neg corner
+  // signature as hourglass but turns much more total angle.
   if (f.totalAbsoluteAngle < 2 * Math.PI * 1.1) return 0;
+  if (f.totalAbsoluteAngle > 2 * Math.PI * 2.4) return 0;
 
   // Vertical or square-ish (loosened to 1.6 — real hourglasses sometimes
   // come out a touch wide).
