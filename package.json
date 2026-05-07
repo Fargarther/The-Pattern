@@ -1,0 +1,26 @@
+{
+  "name": "the-pattern",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Sacred-geometry mobile game. Semantic Recognition Engine + game layer.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "smoke": "tsx src/sre/smoke.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.21",
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "perfect-freehand": "^1.2.3"
+  }
+}

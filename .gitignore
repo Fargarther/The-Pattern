@@ -1,0 +1,20 @@
+node_modules/
+dist/
+build/
+.vite/
+*.tsbuildinfo
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.local
+.env.*.local
+.vscode/
+.idea/
+
+# Quick Draw raw download cache (~650 MB; re-created by scripts/mine-quickdraw.mjs)
+.cache/
+
+# Samples are kept under version control on purpose — they're our regression
+# corpus. Override here if you want to ignore them locally.
+# samples/

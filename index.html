@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>The Pattern — SRE Debugger</title>
+    <link rel="stylesheet" href="/src/app/style.css" />
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <aside id="stats">
+      <div class="row"><span class="k">draw something</span></div>
+      <div class="row hint">stylus or finger or mouse</div>
+    </aside>
+    <div id="actions">
+      <input
+        id="label"
+        type="text"
+        placeholder="label this stroke (or type a shape name to save as template)"
+        autocomplete="off"
+        spellcheck="false"
+      />
+      <button id="recognize" disabled>🔍 recognize</button>
+      <button id="save" disabled>save sample</button>
+      <button id="save-template" disabled>📌 save as template</button>
+      <button id="clear">clear</button>
+      <span id="save-status"></span>
+    </div>
+    <script type="module" src="/src/app/main.ts"></script>
+  </body>
+</html>

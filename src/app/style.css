@@ -1,0 +1,130 @@
+:root {
+  color-scheme: dark;
+  --bg: #0a0a12;
+  --line: #e8e8ea;
+  --resampled: #6fb5c9;
+  --bbox: #2a2a36;
+  --text: #c4c4c8;
+  --hint: #6a6a78;
+  --accent: #9aa5b1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 12px;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+#stats {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  padding: 10px 14px;
+  background: rgba(10, 10, 18, 0.85);
+  border: 1px solid #1f1f2a;
+  border-radius: 4px;
+  pointer-events: none;
+  line-height: 1.6;
+  min-width: 180px;
+}
+
+#stats .row {
+  white-space: pre;
+}
+
+#stats .k {
+  color: var(--hint);
+}
+
+#stats .v {
+  color: var(--text);
+}
+
+#stats .hint {
+  color: var(--hint);
+  font-style: italic;
+}
+
+#actions {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#actions input,
+#actions button {
+  padding: 8px 14px;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid #2a2a36;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 12px;
+}
+
+#actions input {
+  width: 280px;
+}
+
+#actions input::placeholder {
+  color: var(--hint);
+}
+
+#actions input:focus {
+  outline: none;
+  border-color: var(--accent);
+  color: var(--line);
+}
+
+#actions button {
+  cursor: pointer;
+}
+
+#actions button:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--line);
+}
+
+#actions button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#save-status {
+  color: var(--hint);
+  font-size: 11px;
+  min-width: 120px;
+}
+
+#save-status.success {
+  color: #6fb5c9;
+}
+
+#save-status.error {
+  color: #d97a7a;
+}

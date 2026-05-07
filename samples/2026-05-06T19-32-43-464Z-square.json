@@ -1,0 +1,2477 @@
+{
+  "savedAt": "2026-05-06T19:32:43.464Z",
+  "label": "Square",
+  "stroke": {
+    "points": [
+      {
+        "x": 451.25,
+        "y": 493.75,
+        "t": 64726.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 451.25,
+        "y": 492.5,
+        "t": 64932.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 451.25,
+        "y": 491.25,
+        "t": 64939.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 450,
+        "y": 488.75,
+        "t": 64946.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 450,
+        "y": 487.5,
+        "t": 64952.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 450,
+        "y": 483.75,
+        "t": 64958.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 448.75,
+        "y": 481.25,
+        "t": 64966.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 477.5,
+        "t": 64972.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 472.5,
+        "t": 64979.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 467.5,
+        "t": 64986.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 465,
+        "t": 64993.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 461.25,
+        "t": 65000.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 457.5,
+        "t": 65007.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 455,
+        "t": 65015.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 451.25,
+        "t": 65022.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 447.5,
+        "t": 65027.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 446.25,
+        "t": 65035.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 442.5,
+        "t": 65041.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 440,
+        "t": 65048.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 437.5,
+        "t": 65055.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 435,
+        "t": 65061.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 432.5,
+        "t": 65068.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 430,
+        "t": 65076.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 427.5,
+        "t": 65083.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 425,
+        "t": 65090.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 422.5,
+        "t": 65097.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 420,
+        "t": 65109.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 417.5,
+        "t": 65118.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 416.25,
+        "t": 65123.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 415,
+        "t": 65130.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 412.5,
+        "t": 65137.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 411.25,
+        "t": 65144.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 410,
+        "t": 65151,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 408.75,
+        "t": 65158.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 406.25,
+        "t": 65164.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 405,
+        "t": 65171.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 403.75,
+        "t": 65178,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 402.5,
+        "t": 65185.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 401.25,
+        "t": 65192.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 400,
+        "t": 65199.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 398.75,
+        "t": 65207,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 397.5,
+        "t": 65220.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 396.25,
+        "t": 65226.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 395,
+        "t": 65239.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 393.75,
+        "t": 65254.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 392.5,
+        "t": 65260.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 391.25,
+        "t": 65268.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 390,
+        "t": 65281.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 388.75,
+        "t": 65294.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 387.5,
+        "t": 65301.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 386.25,
+        "t": 65316.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 385,
+        "t": 65322.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 383.75,
+        "t": 65336.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 382.5,
+        "t": 65350.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 381.25,
+        "t": 65363,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 380,
+        "t": 65384.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 378.75,
+        "t": 65391.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 377.5,
+        "t": 65404.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 376.25,
+        "t": 65425.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 375,
+        "t": 65439.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 448.75,
+        "y": 373.75,
+        "t": 65467.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 448.75,
+        "y": 372.5,
+        "t": 65480.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 448.75,
+        "y": 371.25,
+        "t": 65507.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 448.75,
+        "y": 370,
+        "t": 65556.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 450,
+        "y": 370,
+        "t": 65577.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 451.25,
+        "y": 370,
+        "t": 65610.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 451.25,
+        "y": 368.75,
+        "t": 65623.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 452.5,
+        "y": 368.75,
+        "t": 65630.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 453.75,
+        "y": 367.5,
+        "t": 65645.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 456.25,
+        "y": 367.5,
+        "t": 65665.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 458.75,
+        "y": 367.5,
+        "t": 65678.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 460,
+        "y": 367.5,
+        "t": 65685.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 462.5,
+        "y": 366.25,
+        "t": 65699.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 465,
+        "y": 366.25,
+        "t": 65706.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 466.25,
+        "y": 366.25,
+        "t": 65713.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 468.75,
+        "y": 366.25,
+        "t": 65720.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 470,
+        "y": 366.25,
+        "t": 65727.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 472.5,
+        "y": 366.25,
+        "t": 65733.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 473.75,
+        "y": 366.25,
+        "t": 65740.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 476.25,
+        "y": 366.25,
+        "t": 65749.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 477.5,
+        "y": 366.25,
+        "t": 65755.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 480,
+        "y": 366.25,
+        "t": 65762.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 481.25,
+        "y": 366.25,
+        "t": 65769.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 483.75,
+        "y": 366.25,
+        "t": 65774.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 485,
+        "y": 366.25,
+        "t": 65781.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 488.75,
+        "y": 366.25,
+        "t": 65789.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 490,
+        "y": 366.25,
+        "t": 65795.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 492.5,
+        "y": 366.25,
+        "t": 65801.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 493.75,
+        "y": 367.5,
+        "t": 65810.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 496.25,
+        "y": 367.5,
+        "t": 65817,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 500,
+        "y": 367.5,
+        "t": 65823.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 501.25,
+        "y": 367.5,
+        "t": 65830.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 502.5,
+        "y": 367.5,
+        "t": 65837.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 505,
+        "y": 367.5,
+        "t": 65843.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 508.75,
+        "y": 368.75,
+        "t": 65850.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 510,
+        "y": 368.75,
+        "t": 65857,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 511.25,
+        "y": 368.75,
+        "t": 65864.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 513.75,
+        "y": 370,
+        "t": 65873.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 516.25,
+        "y": 370,
+        "t": 65878.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 517.5,
+        "y": 370,
+        "t": 65884.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 518.75,
+        "y": 370,
+        "t": 65891.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 521.25,
+        "y": 370,
+        "t": 65898.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 523.75,
+        "y": 370,
+        "t": 65904.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 525,
+        "y": 370,
+        "t": 65912.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 526.25,
+        "y": 371.25,
+        "t": 65919.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 528.75,
+        "y": 371.25,
+        "t": 65925.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 531.25,
+        "y": 371.25,
+        "t": 65932.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 531.25,
+        "y": 372.5,
+        "t": 65939.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 533.75,
+        "y": 372.5,
+        "t": 65946.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 535,
+        "y": 372.5,
+        "t": 65953.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 536.25,
+        "y": 372.5,
+        "t": 65960,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 537.5,
+        "y": 372.5,
+        "t": 65967.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 540,
+        "y": 372.5,
+        "t": 65973.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 541.25,
+        "y": 372.5,
+        "t": 65982.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 542.5,
+        "y": 372.5,
+        "t": 65987.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 543.75,
+        "y": 373.75,
+        "t": 65993.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 545,
+        "y": 373.75,
+        "t": 66001.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 546.25,
+        "y": 373.75,
+        "t": 66007.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 547.5,
+        "y": 373.75,
+        "t": 66014.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 548.75,
+        "y": 373.75,
+        "t": 66022.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 550,
+        "y": 373.75,
+        "t": 66028.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 551.25,
+        "y": 373.75,
+        "t": 66035.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 552.5,
+        "y": 373.75,
+        "t": 66049.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 553.75,
+        "y": 373.75,
+        "t": 66055.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 555,
+        "y": 373.75,
+        "t": 66069.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 556.25,
+        "y": 373.75,
+        "t": 66075.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 557.5,
+        "y": 373.75,
+        "t": 66084.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 558.75,
+        "y": 375,
+        "t": 66097.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 560,
+        "y": 375,
+        "t": 66111.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 561.25,
+        "y": 375,
+        "t": 66117.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 562.5,
+        "y": 375,
+        "t": 66124.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 563.75,
+        "y": 375,
+        "t": 66137.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 565,
+        "y": 375,
+        "t": 66152.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 566.25,
+        "y": 375,
+        "t": 66165.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 567.5,
+        "y": 375,
+        "t": 66172.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 568.75,
+        "y": 375,
+        "t": 66185.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 570,
+        "y": 375,
+        "t": 66200,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 570,
+        "y": 376.25,
+        "t": 66206,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 571.25,
+        "y": 376.25,
+        "t": 66213.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 572.5,
+        "y": 376.25,
+        "t": 66220.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 573.75,
+        "y": 376.25,
+        "t": 66240.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 575,
+        "y": 376.25,
+        "t": 66254.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 576.25,
+        "y": 376.25,
+        "t": 66267.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 577.5,
+        "y": 376.25,
+        "t": 66275.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 577.5,
+        "y": 377.5,
+        "t": 66281.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 578.75,
+        "y": 377.5,
+        "t": 66296.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 580,
+        "y": 377.5,
+        "t": 66309.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 581.25,
+        "y": 377.5,
+        "t": 66323.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 581.25,
+        "y": 378.75,
+        "t": 66330.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 582.5,
+        "y": 378.75,
+        "t": 66337.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 582.5,
+        "y": 380,
+        "t": 66343.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 380,
+        "t": 66350.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 585,
+        "y": 380,
+        "t": 66365.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 585,
+        "y": 381.25,
+        "t": 66371.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 586.25,
+        "y": 382.5,
+        "t": 66385,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 587.5,
+        "y": 382.5,
+        "t": 66391.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 587.5,
+        "y": 385,
+        "t": 66399.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 386.25,
+        "t": 66411.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 387.5,
+        "t": 66420.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 390,
+        "t": 66426.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 392.5,
+        "t": 66433.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 395,
+        "t": 66441.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 591.25,
+        "y": 396.25,
+        "t": 66446.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 591.25,
+        "y": 398.75,
+        "t": 66453.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 401.25,
+        "t": 66460.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 403.75,
+        "t": 66467.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 406.25,
+        "t": 66474.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 408.75,
+        "t": 66482.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 410,
+        "t": 66488.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 412.5,
+        "t": 66494.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 415,
+        "t": 66501.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 417.5,
+        "t": 66508,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 420,
+        "t": 66515.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 421.25,
+        "t": 66522.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 423.75,
+        "t": 66528.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 592.5,
+        "y": 426.25,
+        "t": 66535.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 591.25,
+        "y": 427.5,
+        "t": 66542.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 591.25,
+        "y": 428.75,
+        "t": 66549.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 591.25,
+        "y": 431.25,
+        "t": 66556.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 432.5,
+        "t": 66563.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 433.75,
+        "t": 66570.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 435,
+        "t": 66577.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 437.5,
+        "t": 66583.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 438.75,
+        "t": 66590.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 440,
+        "t": 66597.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 590,
+        "y": 441.25,
+        "t": 66603.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 442.5,
+        "t": 66612.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 445,
+        "t": 66618.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 446.25,
+        "t": 66624.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 588.75,
+        "y": 448.75,
+        "t": 66638.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 587.5,
+        "y": 450,
+        "t": 66644.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 587.5,
+        "y": 451.25,
+        "t": 66652.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 587.5,
+        "y": 452.5,
+        "t": 66659.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 586.25,
+        "y": 453.75,
+        "t": 66666.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 586.25,
+        "y": 455,
+        "t": 66673.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 586.25,
+        "y": 456.25,
+        "t": 66679.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 586.25,
+        "y": 458.75,
+        "t": 66694.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 586.25,
+        "y": 460,
+        "t": 66706.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 585,
+        "y": 461.25,
+        "t": 66714.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 585,
+        "y": 462.5,
+        "t": 66720.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 585,
+        "y": 463.75,
+        "t": 66727,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 465,
+        "t": 66734.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 466.25,
+        "t": 66740.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 467.5,
+        "t": 66747.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 468.75,
+        "t": 66755.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 470,
+        "t": 66761.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 583.75,
+        "y": 471.25,
+        "t": 66768.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 582.5,
+        "y": 472.5,
+        "t": 66775.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 582.5,
+        "y": 473.75,
+        "t": 66783,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 582.5,
+        "y": 475,
+        "t": 66789,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 582.5,
+        "y": 476.25,
+        "t": 66796.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 581.25,
+        "y": 477.5,
+        "t": 66802.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 581.25,
+        "y": 480,
+        "t": 66816.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 581.25,
+        "y": 481.25,
+        "t": 66831,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 580,
+        "y": 482.5,
+        "t": 66845.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 580,
+        "y": 485,
+        "t": 66857.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 578.75,
+        "y": 486.25,
+        "t": 66877.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 578.75,
+        "y": 487.5,
+        "t": 66892.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 578.75,
+        "y": 488.75,
+        "t": 66899.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 577.5,
+        "y": 490,
+        "t": 66927.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 577.5,
+        "y": 491.25,
+        "t": 66939.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 577.5,
+        "y": 492.5,
+        "t": 66953.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 577.5,
+        "y": 493.75,
+        "t": 66961,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 576.25,
+        "y": 493.75,
+        "t": 66968.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 576.25,
+        "y": 495,
+        "t": 66974.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 575,
+        "y": 495,
+        "t": 66995.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 575,
+        "y": 496.25,
+        "t": 67002.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 575,
+        "y": 497.5,
+        "t": 67016.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 573.75,
+        "y": 498.75,
+        "t": 67036.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 572.5,
+        "y": 500,
+        "t": 67070.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 571.25,
+        "y": 500,
+        "t": 67084.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 570,
+        "y": 500,
+        "t": 67092.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 568.75,
+        "y": 501.25,
+        "t": 67098.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 566.25,
+        "y": 502.5,
+        "t": 67111.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 563.75,
+        "y": 502.5,
+        "t": 67118.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 561.25,
+        "y": 502.5,
+        "t": 67124.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 560,
+        "y": 502.5,
+        "t": 67132.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 556.25,
+        "y": 502.5,
+        "t": 67138.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 555,
+        "y": 502.5,
+        "t": 67146.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 551.25,
+        "y": 502.5,
+        "t": 67152.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 548.75,
+        "y": 502.5,
+        "t": 67158.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 545,
+        "y": 502.5,
+        "t": 67167.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 542.5,
+        "y": 502.5,
+        "t": 67172.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 538.75,
+        "y": 502.5,
+        "t": 67179.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 537.5,
+        "y": 502.5,
+        "t": 67187.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 535,
+        "y": 502.5,
+        "t": 67193.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 532.5,
+        "y": 502.5,
+        "t": 67200.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 530,
+        "y": 502.5,
+        "t": 67207.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 528.75,
+        "y": 502.5,
+        "t": 67214.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 527.5,
+        "y": 502.5,
+        "t": 67220.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 526.25,
+        "y": 502.5,
+        "t": 67228.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 523.75,
+        "y": 502.5,
+        "t": 67234.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 522.5,
+        "y": 502.5,
+        "t": 67240.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 521.25,
+        "y": 501.25,
+        "t": 67249,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 518.75,
+        "y": 501.25,
+        "t": 67254.80000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 517.5,
+        "y": 501.25,
+        "t": 67261.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 516.25,
+        "y": 501.25,
+        "t": 67268.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 513.75,
+        "y": 501.25,
+        "t": 67275.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 512.5,
+        "y": 501.25,
+        "t": 67282.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 511.25,
+        "y": 501.25,
+        "t": 67289.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 510,
+        "y": 501.25,
+        "t": 67296.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 507.5,
+        "y": 501.25,
+        "t": 67302.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 505,
+        "y": 500,
+        "t": 67309.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 503.75,
+        "y": 500,
+        "t": 67316.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 502.5,
+        "y": 500,
+        "t": 67323.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 500,
+        "y": 500,
+        "t": 67330.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 500,
+        "y": 498.75,
+        "t": 67337.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 498.75,
+        "y": 498.75,
+        "t": 67343.90000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 496.25,
+        "y": 498.75,
+        "t": 67350.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 493.75,
+        "y": 498.75,
+        "t": 67365,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 492.5,
+        "y": 498.75,
+        "t": 67371.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 490,
+        "y": 498.75,
+        "t": 67385,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 487.5,
+        "y": 498.75,
+        "t": 67391.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 486.25,
+        "y": 498.75,
+        "t": 67399.30000001192,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 485,
+        "y": 498.75,
+        "t": 67405.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 482.5,
+        "y": 498.75,
+        "t": 67412.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 481.25,
+        "y": 498.75,
+        "t": 67419.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 478.75,
+        "y": 498.75,
+        "t": 67433,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 476.25,
+        "y": 498.75,
+        "t": 67440.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 475,
+        "y": 498.75,
+        "t": 67453.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 472.5,
+        "y": 498.75,
+        "t": 67461,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 471.25,
+        "y": 498.75,
+        "t": 67474.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 468.75,
+        "y": 498.75,
+        "t": 67481.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 467.5,
+        "y": 498.75,
+        "t": 67495.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 466.25,
+        "y": 498.75,
+        "t": 67502.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 465,
+        "y": 498.75,
+        "t": 67516.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 463.75,
+        "y": 498.75,
+        "t": 67522.40000000596,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 462.5,
+        "y": 498.75,
+        "t": 67536,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 461.25,
+        "y": 498.75,
+        "t": 67542.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 460,
+        "y": 498.75,
+        "t": 67557.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 458.75,
+        "y": 498.75,
+        "t": 67564.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 457.5,
+        "y": 498.75,
+        "t": 67578,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 456.25,
+        "y": 498.75,
+        "t": 67584.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 455,
+        "y": 498.75,
+        "t": 67598,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 453.75,
+        "y": 498.75,
+        "t": 67604.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 452.5,
+        "y": 498.75,
+        "t": 67612.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 451.25,
+        "y": 498.75,
+        "t": 67625.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 450,
+        "y": 498.75,
+        "t": 67638.70000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 448.75,
+        "y": 498.75,
+        "t": 67652.09999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 447.5,
+        "y": 498.75,
+        "t": 67673.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 446.25,
+        "y": 497.5,
+        "t": 67687,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 445,
+        "y": 497.5,
+        "t": 67707.20000001788,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 443.75,
+        "y": 497.5,
+        "t": 67743,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 442.5,
+        "y": 497.5,
+        "t": 67763.5,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      },
+      {
+        "x": 442.5,
+        "y": 496.25,
+        "t": 67817.59999999404,
+        "pressure": 0.5,
+        "pointerType": "mouse"
+      }
+    ],
+    "startTime": 64726.30000001192,
+    "endTime": 67817.59999999404,
+    "pointerType": "mouse"
+  },
+  "features": {
+    "cornerCount": 4,
+    "cornerAngles": [
+      1.0477419682230698,
+      0.6684628907245068,
+      0.6860725602348472,
+      1.4899137439392216
+    ],
+    "cornerIndices": [
+      15,
+      32,
+      47,
+      62
+    ],
+    "cornerTurnRatio": 0.5857462173490329,
+    "totalAbsoluteAngle": 6.644842165156275,
+    "totalSignedAngle": 6.283185307179589,
+    "closureDistance": 0.04272868709574357,
+    "isClosed": true,
+    "bboxWidth": 148.24546673351932,
+    "bboxHeight": 135.35778992452236,
+    "bboxAspectRatio": 1.0952119328793957,
+    "bboxDiagonal": 200.74473766525017,
+    "sideLengths": [
+      136.63649882764517,
+      118.89701866215707,
+      122.16345530969166,
+      127.72972524991384
+    ],
+    "sideLengthMean": 126.35667451235193,
+    "sideLengthStdev": 6.72290132617828,
+    "sideLengthCV": 0.053205747556462374,
+    "dcr": 14.350149671292849,
+    "horizontalSymmetry": 0.02378853366252533,
+    "verticalSymmetry": 0.018744412619772492,
+    "rotationalSymmetry4": 0.02503554739162955
+  },
+  "recognition": {
+    "shape": "square",
+    "confidence": 0.8576249774011682,
+    "alternativeMatches": []
+  },
+  "resampled": [
+    {
+      "x": 455.236712500526,
+      "y": 490.1260575402106
+    },
+    {
+      "x": 454.4589332508185,
+      "y": 481.98952889459736
+    },
+    {
+      "x": 453.996192086132,
+      "y": 473.819655613873
+    },
+    {
+      "x": 453.6251111713928,
+      "y": 465.6449960983783
+    },
+    {
+      "x": 453.3030029112194,
+      "y": 457.4682966444084
+    },
+    {
+      "x": 452.9943622669352,
+      "y": 449.291061306824
+    },
+    {
+      "x": 452.7107227454204,
+      "y": 441.1128965783452
+    },
+    {
+      "x": 452.4479676944632,
+      "y": 432.9340333026589
+    },
+    {
+      "x": 452.22093625812687,
+      "y": 424.7541085711945
+    },
+    {
+      "x": 452.00965547120194,
+      "y": 416.5737607160497
+    },
+    {
+      "x": 451.84191681589607,
+      "y": 408.39240948989715
+    },
+    {
+      "x": 451.7204871163957,
+      "y": 400.21022777020823
+    },
+    {
+      "x": 451.6161797493965,
+      "y": 392.02781241203337
+    },
+    {
+      "x": 451.55612487249704,
+      "y": 383.84495514234385
+    },
+    {
+      "x": 451.5213078418534,
+      "y": 375.66194699159377
+    },
+    {
+      "x": 452.4715664858684,
+      "y": 367.6097459615405
+    },
+    {
+      "x": 459.7396676217258,
+      "y": 364.4888765948568
+    },
+    {
+      "x": 467.88733058285527,
+      "y": 363.76100914541814
+    },
+    {
+      "x": 476.0621177711804,
+      "y": 363.39615019305154
+    },
+    {
+      "x": 484.2420626127076,
+      "y": 363.1731464437856
+    },
+    {
+      "x": 492.42255288773396,
+      "y": 363.2112693550913
+    },
+    {
+      "x": 500.60397653246434,
+      "y": 363.3752321068925
+    },
+    {
+      "x": 508.7800589143013,
+      "y": 363.7005554583966
+    },
+    {
+      "x": 516.9476449583867,
+      "y": 364.19768154781116
+    },
+    {
+      "x": 525.1168641245451,
+      "y": 364.6462630869043
+    },
+    {
+      "x": 533.238641013089,
+      "y": 365.60320651022795
+    },
+    {
+      "x": 541.335580254322,
+      "y": 366.7811870866191
+    },
+    {
+      "x": 549.3878724067382,
+      "y": 368.22792801027765
+    },
+    {
+      "x": 557.5038211312765,
+      "y": 369.26160343000134
+    },
+    {
+      "x": 565.5872802438147,
+      "y": 370.4870584902182
+    },
+    {
+      "x": 573.7075138580765,
+      "y": 371.3981596659726
+    },
+    {
+      "x": 581.7771433461992,
+      "y": 372.69296208488265
+    },
+    {
+      "x": 588.8139114604649,
+      "y": 376.57064874559103
+    },
+    {
+      "x": 591.9496400195,
+      "y": 384.0148035763006
+    },
+    {
+      "x": 593.8920444334871,
+      "y": 391.95682757196664
+    },
+    {
+      "x": 594.970696547518,
+      "y": 400.0664778297849
+    },
+    {
+      "x": 595.5560705727686,
+      "y": 408.22805126606846
+    },
+    {
+      "x": 595.8223779370762,
+      "y": 416.40265814032944
+    },
+    {
+      "x": 595.3424303930854,
+      "y": 424.5671055749168
+    },
+    {
+      "x": 594.787157697258,
+      "y": 432.73051082165574
+    },
+    {
+      "x": 594.0574735860127,
+      "y": 440.8790231564856
+    },
+    {
+      "x": 593.1089117215923,
+      "y": 449.00619596088643
+    },
+    {
+      "x": 591.808261009304,
+      "y": 457.07461759789675
+    },
+    {
+      "x": 589.8481794533199,
+      "y": 465.0164921464158
+    },
+    {
+      "x": 587.7578579012171,
+      "y": 472.92587453539727
+    },
+    {
+      "x": 585.0498886473379,
+      "y": 480.63286021622633
+    },
+    {
+      "x": 582.1850081886977,
+      "y": 488.2636047445801
+    },
+    {
+      "x": 577.7311655396642,
+      "y": 494.9500126127968
+    },
+    {
+      "x": 570.0158286380957,
+      "y": 497.31224392070555
+    },
+    {
+      "x": 561.8542675022194,
+      "y": 497.8782610318878
+    },
+    {
+      "x": 553.6763380125673,
+      "y": 498.16418231472124
+    },
+    {
+      "x": 545.4958879336745,
+      "y": 498.37050637698775
+    },
+    {
+      "x": 537.3143766863827,
+      "y": 498.53093636830795
+    },
+    {
+      "x": 529.136040138565,
+      "y": 498.46054922540003
+    },
+    {
+      "x": 520.958165032518,
+      "y": 498.17203969195026
+    },
+    {
+      "x": 512.7835438094585,
+      "y": 497.83052355397115
+    },
+    {
+      "x": 504.62282769415447,
+      "y": 497.25289185851517
+    },
+    {
+      "x": 496.45428480694295,
+      "y": 496.7667589865658
+    },
+    {
+      "x": 488.28185228951537,
+      "y": 496.3503592791679
+    },
+    {
+      "x": 480.1068346171614,
+      "y": 495.98883082784977
+    },
+    {
+      "x": 471.9295768232768,
+      "y": 495.68120008912695
+    },
+    {
+      "x": 463.7501062038959,
+      "y": 495.44039446672207
+    },
+    {
+      "x": 455.5682171123678,
+      "y": 495.3019284447132
+    },
+    {
+      "x": 447.5769112035569,
+      "y": 493.9863637318213
+    }
+  ],
+  "cornerPositions": [
+    {
+      "x": 452.4715664858684,
+      "y": 367.6097459615405
+    },
+    {
+      "x": 588.8139114604649,
+      "y": 376.57064874559103
+    },
+    {
+      "x": 577.7311655396642,
+      "y": 494.9500126127968
+    },
+    {
+      "x": 455.5682171123678,
+      "y": 495.3019284447132
+    }
+  ],
+  "bbox": {
+    "minX": 447.5769112035569,
+    "minY": 363.1731464437856,
+    "maxX": 595.8223779370762,
+    "maxY": 498.53093636830795
+  },
+  "runtimeMs": 3,
+  "viewport": {
+    "width": 1707,
+    "height": 801,
+    "dpr": 0.800000011920929
+  },
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
+}
