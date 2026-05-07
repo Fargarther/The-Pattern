@@ -26,7 +26,6 @@ import {
 } from '../sre/canonicalize.js';
 import { recognizeComposite, type CompositeResult } from '../sre/composite.js';
 import { buildTemplate, type QTemplate } from '../sre/qdollar.js';
-import { getStroke } from 'perfect-freehand';
 import {
   addRuntimeTemplate,
   getRuntimeTemplateCount,
@@ -132,46 +131,6 @@ function drawPolyline(pts: { x: number; y: number }[], color: string, width: num
   ctx!.stroke();
 }
 
-/** Render raw input as a tapered, pressure/velocity-sensitive ink stroke
- *  via perfect-freehand. Produces a filled outline polygon — feels like
- *  real ink instead of a uniform-width plotter line. Used for live drawing
- *  and recently-drawn buffer ghosts; canonical (snapped) shapes still use
- *  the precise polyline/polygon renderers above.
- */
-function drawInkStroke(
-  pts: readonly RawPoint[] | readonly { x: number; y: number; pressure?: number }[],
-  color: string,
-  size: number,
-): void {
-  if (pts.length < 2) return;
-  const inputs: [number, number, number][] = pts.map((p) => [
-    p.x,
-    p.y,
-    typeof (p as { pressure?: number }).pressure === 'number'
-      ? (p as { pressure?: number }).pressure!
-      : 0.5,
-  ]);
-  const outline = getStroke(inputs, {
-    size,
-    thinning: 0.55,
-    smoothing: 0.5,
-    streamline: 0.5,
-    simulatePressure: true,
-    last: true,
-    start: { taper: true, cap: true },
-    end: { taper: true, cap: true },
-  });
-  if (outline.length < 3) return;
-  ctx!.fillStyle = color;
-  ctx!.beginPath();
-  ctx!.moveTo(outline[0]![0], outline[0]![1]);
-  for (let i = 1; i < outline.length; i++) {
-    ctx!.lineTo(outline[i]![0], outline[i]![1]);
-  }
-  ctx!.closePath();
-  ctx!.fill();
-}
-
 function drawDots(pts: { x: number; y: number }[], color: string, radius: number): void {
   ctx!.fillStyle = color;
   for (const p of pts) {
@@ -254,7 +213,7 @@ function render(): void {
   // Render any not-yet-committed strokes in the buffer as faint ghosts so
   // the user can see what they've drawn.
   for (const s of strokeBuffer) {
-    drawInkStroke(s.points, COLOR_RAW_FAINT, 4);
+    drawPolyline(s.points, COLOR_RAW_FAINT, 1.5);
   }
 
   // After commit: ALWAYS render what the user actually drew (canonical
@@ -273,7 +232,7 @@ function render(): void {
 
       // Draw raw user input regardless of recognition outcome.
       for (const s of lastResult.composite.groups[i]!.group.strokes) {
-        drawInkStroke(s.points, color, 5);
+        drawPolyline(s.points, color, 2);
       }
       // Show corner detection only when no shape was matched — helps debug
       // why a drawing failed to classify.
@@ -284,7 +243,7 @@ function render(): void {
   }
 
   if (drawingPoints.length > 1) {
-    drawInkStroke(drawingPoints, COLOR_RAW, 5);
+    drawPolyline(drawingPoints, COLOR_RAW, 2);
   }
 }
 
