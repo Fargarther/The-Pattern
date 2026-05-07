@@ -80,13 +80,11 @@ let activePointerId: number | null = null;
 let drawingPoints: RawPoint[] = [];
 
 // strokeBuffer holds strokes drawn since the last commit (rendered as
-// faint ghosts before recognition fires). committedStrokes accumulates
-// every stroke that has been committed since the last "clear" — each
-// auto-commit appends to it and re-runs recognition over the full pile.
-// This is what keeps previously-recognized shapes on-screen when the
-// user starts drawing the next one.
+// faint ghosts before recognition fires). Each commit replaces
+// lastResult with whatever's in strokeBuffer; previous result stays
+// visible until the next commit, which gives the user time to hit
+// 📌 / save-sample on the recognized gesture before drawing the next.
 let strokeBuffer: Stroke[] = [];
-let committedStrokes: Stroke[] = [];
 let commitTimer: number | null = null;
 
 interface GroupRender {
@@ -318,19 +316,13 @@ function commitBuffer(): void {
   }
   if (strokeBuffer.length === 0) return;
 
-  // Accumulate: append the buffered (un-committed) strokes onto the
-  // committed pile, then re-run recognition across EVERYTHING. Previous
-  // shapes stay on-screen; the new gesture just becomes another group
-  // in the composite. Clear button is the only way to wipe the pile.
-  committedStrokes = [...committedStrokes, ...strokeBuffer];
-  strokeBuffer = [];
-
   const t0 = performance.now();
-  const composite = recognizeComposite(committedStrokes);
+  const composite = recognizeComposite(strokeBuffer);
   const groups = composite.groups.map((g) => processGroup(g.group.strokes));
   const elapsed = performance.now() - t0;
 
   lastResult = { composite, groups, runtimeMs: elapsed };
+  strokeBuffer = [];
   saveBtn.disabled = false;
   saveTemplateBtn.disabled = false;
   setSaveStatus('', 'idle');
@@ -446,7 +438,6 @@ canvas.addEventListener('pointercancel', endStroke);
 clearBtn.addEventListener('click', () => {
   drawingPoints = [];
   strokeBuffer = [];
-  committedStrokes = [];
   if (commitTimer !== null) {
     window.clearTimeout(commitTimer);
     commitTimer = null;
@@ -458,7 +449,7 @@ clearBtn.addEventListener('click', () => {
   setSaveStatus('', 'idle');
   updateStats([
     'draw something',
-    `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — clear to wipe`,
+    `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — save before next stroke`,
     `templates loaded: ${getRuntimeTemplateCount()}`,
   ]);
   render();
@@ -661,7 +652,7 @@ async function loadRuntimeTemplates(): Promise<void> {
     setRuntimeTemplates(built);
     updateStats([
       'draw something',
-      `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — clear to wipe`,
+      `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — save before next stroke`,
       `templates loaded: ${getRuntimeTemplateCount()}`,
     ]);
   } catch {
