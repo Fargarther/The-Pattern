@@ -422,12 +422,11 @@ function endStroke(e: PointerEvent): void {
       pointerType: drawingPoints[0]!.pointerType ?? 'mouse',
     };
     strokeBuffer.push(stroke);
+    // Manual recognition only — user clicks 🔍 when ready. Auto-commit
+    // timer was tried twice and removed; recognition firing mid-iteration
+    // disrupts the template-collection workflow.
     recognizeBtn.disabled = false;
     saveTemplateBtn.disabled = false;
-    // Auto-commit after a pause. The manual 🔍 button still works for
-    // forcing recognition before the timer fires; starting a new stroke
-    // cancels the pending commit (see pointerdown handler).
-    scheduleCommit();
   }
   drawingPoints = [];
   render();
@@ -450,7 +449,7 @@ clearBtn.addEventListener('click', () => {
   setSaveStatus('', 'idle');
   updateStats([
     'draw something',
-    `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — 🔍 forces it`,
+    'manual mode — 🔍 to recognize, 📌 to save as template',
     `templates loaded: ${getRuntimeTemplateCount()}`,
   ]);
   render();
@@ -653,7 +652,7 @@ async function loadRuntimeTemplates(): Promise<void> {
     setRuntimeTemplates(built);
     updateStats([
       'draw something',
-      `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — 🔍 forces it`,
+      'manual mode — 🔍 to recognize, 📌 to save as template',
       `templates loaded: ${getRuntimeTemplateCount()}`,
     ]);
   } catch {
