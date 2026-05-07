@@ -54,6 +54,15 @@ const SHAPE_TO_QD = {
   snowflake: 'snowflake',
   eye: 'eye',
   flask: 'wine bottle',
+  // v4.2 B-direction additions with QD analogues
+  sword: 'sword',
+  axe: 'axe',
+  dagger: 'knife',     // QD has knife; dagger silhouettes match closely enough
+  fang: 'tooth',       // single curved tooth is the closest QD analogue
+  helmet: 'helmet',
+  lantern: 'lantern',
+  boot: 'shoe',
+  // No QD equivalent: bow, claw, wing, scroll, orb, gem — synthetic-only
 };
 
 const QD_BASE = 'https://storage.googleapis.com/quickdraw_dataset/full/simplified';

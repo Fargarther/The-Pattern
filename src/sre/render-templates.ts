@@ -11,23 +11,36 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {
   anchorOutline,
+  axeOutline,
   bellOutline,
+  bootOutline,
+  bowOutline,
   boomerangOutline,
+  clawOutline,
   crescentOutline,
   crownOutline,
+  daggerOutline,
   eyeOutline,
+  fangOutline,
   featherOutline,
   flameOutline,
   flaskOutline,
+  gemOutline,
   hammerOutline,
   heartOutline,
+  helmetOutline,
+  lanternOutline,
+  orbOutline,
+  scrollOutline,
   shieldOutline,
   skullOutline,
   snowflakeOutline,
   spiralOutline,
   starOutline,
+  swordOutline,
   tearOutline,
   waveOutline,
+  wingOutline,
 } from './templates.js';
 import {
   canonicalize,
@@ -81,13 +94,28 @@ const GLYPHS: Glyph[] = [
   { name: 'star (mage, 6-pt)', shape: 'star', outline: starOutline(6), closed: true, group: 'symbol' },
   { name: 'boomerang', shape: 'boomerang', outline: boomerangOutline(), closed: false, group: 'symbol' },
 
-  // Class units (newly added — synthetic seeds)
+  // Class units (synthetic seeds)
   { name: 'shuriken (ninja)', shape: 'shuriken', outline: starOutline(4), closed: true, group: 'symbol' },
   { name: 'flask (alchemist)', shape: 'flask', outline: flaskOutline(), closed: true, group: 'symbol' },
   { name: 'eye (seer)', shape: 'eye', outline: eyeOutline(), closed: true, group: 'symbol' },
   { name: 'hammer (siege)', shape: 'hammer', outline: hammerOutline(), closed: true, group: 'symbol' },
   { name: 'crown (commander)', shape: 'crown', outline: crownOutline(), closed: true, group: 'symbol' },
   { name: 'bell (bard)', shape: 'bell', outline: bellOutline(), closed: true, group: 'symbol' },
+
+  // B-direction additions (v4.2 — synthetic seeds, still need real templates)
+  { name: 'sword (duelist)', shape: 'sword', outline: swordOutline(), closed: true, group: 'symbol' },
+  { name: 'bow (archer)', shape: 'bow', outline: bowOutline(), closed: false, group: 'symbol' },
+  { name: 'axe (executioner)', shape: 'axe', outline: axeOutline(), closed: true, group: 'symbol' },
+  { name: 'dagger (assassin)', shape: 'dagger', outline: daggerOutline(), closed: true, group: 'symbol' },
+  { name: 'fang (venom-bite)', shape: 'fang', outline: fangOutline(), closed: true, group: 'symbol' },
+  { name: 'claw (multi-strike)', shape: 'claw', outline: clawOutline(), closed: false, group: 'symbol' },
+  { name: 'wing (flying)', shape: 'wing', outline: wingOutline(), closed: true, group: 'symbol' },
+  { name: 'scroll (caster)', shape: 'scroll', outline: scrollOutline(), closed: true, group: 'symbol' },
+  { name: 'orb (mana battery)', shape: 'orb', outline: orbOutline(), closed: true, group: 'symbol' },
+  { name: 'lantern (reveal)', shape: 'lantern', outline: lanternOutline(), closed: true, group: 'symbol' },
+  { name: 'gem (passive aura)', shape: 'gem', outline: gemOutline(), closed: true, group: 'symbol' },
+  { name: 'boot (speed)', shape: 'boot', outline: bootOutline(), closed: true, group: 'symbol' },
+  { name: 'helmet (defensive)', shape: 'helmet', outline: helmetOutline(), closed: true, group: 'symbol' },
 
   // Modifier sources (inner-only)
   { name: 'flame (fire mod)', shape: 'flame', outline: flameOutline(), closed: true, group: 'modifier' },

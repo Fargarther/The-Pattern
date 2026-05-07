@@ -82,6 +82,9 @@ export type ShapeName =
   | 'plusSign' | 'arrow' | 'arrowDown' | 'bolt' | 'tear' | 'shield' | 'star' | 'boomerang'
   // Class units
   | 'shuriken' | 'flask' | 'eye' | 'hammer' | 'crown' | 'bell'
+  // B-direction additions (v4.2 dictionary)
+  | 'sword' | 'bow' | 'axe' | 'dagger' | 'fang' | 'claw' | 'wing'
+  | 'scroll' | 'orb' | 'lantern' | 'gem' | 'boot' | 'helmet'
   // Modifier sources (inner-only)
   | 'flame' | 'wave' | 'feather' | 'snowflake' | 'crescent' | 'sun' | 'skull'
   | 'hourglass' | 'anchor' | 'heart' | 'spiral';

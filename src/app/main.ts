@@ -43,6 +43,9 @@ const KNOWN_SHAPE_NAMES: ReadonlySet<string> = new Set<ShapeName>([
   'plusSign', 'arrow', 'arrowDown', 'bolt', 'tear', 'shield', 'star', 'boomerang',
   // Class units
   'shuriken', 'flask', 'eye', 'hammer', 'crown', 'bell',
+  // B-direction additions (v4.2 — see project_pattern_dictionary memory)
+  'sword', 'bow', 'axe', 'dagger', 'fang', 'claw', 'wing',
+  'scroll', 'orb', 'lantern', 'gem', 'boot', 'helmet',
   // Modifier sources (inner-only)
   'flame', 'wave', 'feather', 'snowflake', 'crescent', 'sun', 'skull',
   'hourglass', 'anchor', 'heart', 'spiral',

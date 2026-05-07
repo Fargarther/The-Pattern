@@ -30,6 +30,8 @@ const KNOWN_SHAPES = new Set<string>([
   'pentagon', 'hexagon', 'heptagon', 'octagon', 'nonagon', 'decagon',
   'plusSign', 'arrow', 'arrowDown', 'bolt', 'tear', 'shield', 'star', 'boomerang',
   'shuriken', 'flask', 'eye', 'hammer', 'crown', 'bell',
+  'sword', 'bow', 'axe', 'dagger', 'fang', 'claw', 'wing',
+  'scroll', 'orb', 'lantern', 'gem', 'boot', 'helmet',
   'flame', 'wave', 'feather', 'snowflake', 'crescent', 'sun', 'skull',
   'hourglass', 'anchor', 'heart', 'spiral',
 ]);
