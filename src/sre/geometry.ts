@@ -198,10 +198,145 @@ export function gaussianSmooth(values: readonly number[], sigma: number): number
 }
 
 /**
+ * Find polygon-vertex corners on a turning-angle signal using three gates:
+ *
+ *   1. **Local max** — the candidate must equal-or-exceed both immediate
+ *      neighbors. Filters out monotonic ramps (curves) where every sample
+ *      contributes some turn but no individual sample is locally distinct.
+ *
+ *   2. **Windowed sum ≥ windowSumThreshold** — the total |angle| within a
+ *      (2·windowHalfWidth+1)-sample window must exceed `windowSumThreshold`.
+ *      A sharp corner concentrates ~one corner-angle worth of turn (45°
+ *      for an octagon, 60° for a hexagon) into 1–3 samples; a slightly-
+ *      rounded corner spreads the same total across 4–5 samples. The
+ *      windowed sum catches both, while a stand-alone wobble of 25° within
+ *      otherwise-smooth turn falls below this gate.
+ *
+ *   3. **Baseline-sample count ≥ minBaselineSamples** — at least this many
+ *      samples in the window must lie below `peak / 2`. Real corners sit
+ *      in a low-magnitude baseline (≥2 of the 4 non-center samples are
+ *      well below the peak); sustained-moderate-turn curve segments don't
+ *      have that baseline (most window samples are close to the peak).
+ *      Robust to ADJACENT real corners — only the high-magnitude neighbor
+ *      gets excluded from the baseline count, the rest of the baseline
+ *      remains. (Earlier "peak/window-mean" formulation double-counted
+ *      adjacent corners as background, dragging down legitimate corners.)
+ *
+ * Candidates ranked by windowed sum desc; greedy NMS within `minSpacing`.
+ *
+ * Replaces the older single-sample threshold approach (May 2026 tuning):
+ * a slightly-rounded octagon corner whose peak landed at 22° was being
+ * missed by the old 22.5° threshold. The windowed sum on that same corner
+ * is 39° and the concentration ratio is 2.8, so it now passes cleanly.
+ */
+export function findCornerPeaks(
+  values: readonly number[],
+  options: {
+    rawThreshold: number;
+    windowSumThreshold: number;
+    minBaselineSamples: number;
+    minSpacing: number;
+    isClosed: boolean;
+    windowHalfWidth?: number;
+  },
+): number[] {
+  const {
+    rawThreshold,
+    windowSumThreshold,
+    minBaselineSamples,
+    minSpacing,
+    isClosed,
+    windowHalfWidth = 2,
+  } = options;
+  const n = values.length;
+  if (n === 0) return [];
+
+  const wrap = (i: number) => ((i % n) + n) % n;
+
+  const candidates: { idx: number; mag: number }[] = [];
+  for (let i = 0; i < n; i++) {
+    const v = Math.abs(values[i]!);
+    if (v < rawThreshold) continue;
+
+    // Local-max check (>= so flat ties don't drop both samples).
+    let prev: number;
+    let next: number;
+    if (isClosed) {
+      prev = Math.abs(values[wrap(i - 1)]!);
+      next = Math.abs(values[wrap(i + 1)]!);
+    } else {
+      prev = i > 0 ? Math.abs(values[i - 1]!) : 0;
+      next = i < n - 1 ? Math.abs(values[i + 1]!) : 0;
+    }
+    if (v < prev || v < next) continue;
+
+    // Windowed sum + baseline-sample count. We want both the total turn
+    // within the window and confirmation that the peak sits above an
+    // identifiable LOW-magnitude baseline (real corners have one), rather
+    // than in the middle of a sustained-moderate-turn region (curves).
+    let sum = 0;
+    let baselineCount = 0;
+    const halfPeak = v / 2;
+    for (let k = -windowHalfWidth; k <= windowHalfWidth; k++) {
+      let idx = i + k;
+      if (isClosed) {
+        idx = wrap(idx);
+      } else if (idx < 0 || idx >= n) {
+        continue;
+      }
+      const sample = Math.abs(values[idx]!);
+      sum += sample;
+      if (k !== 0 && sample < halfPeak) baselineCount++;
+    }
+    if (sum < windowSumThreshold) continue;
+    if (baselineCount < minBaselineSamples) continue;
+
+    // Rank by single-sample peak (NOT windowed sum). Adjacent corners
+    // share their windows, so windowed-sum ties between very-different
+    // peak strengths happen often (e.g., a 176° spike next to a 53° corner
+    // both sum to ~234° because each window includes the other corner).
+    // Ranking by peak ensures the genuinely-sharper corner wins NMS.
+    candidates.push({ idx: i, mag: v });
+  }
+
+  // Rank by single-sample peak descending, with idx tiebreak.
+  candidates.sort((a, b) => {
+    const diff = b.mag - a.mag;
+    if (Math.abs(diff) < 1e-9) return a.idx - b.idx;
+    return diff;
+  });
+
+  const accepted: number[] = [];
+  const taken = new Array(n).fill(false);
+  for (const c of candidates) {
+    let blocked = false;
+    // For closed shapes also check wraparound spacing — corners at i=0 and
+    // i=n-1 are adjacent on the closed contour, not far apart.
+    for (let off = -minSpacing; off <= minSpacing; off++) {
+      const j = isClosed ? wrap(c.idx + off) : c.idx + off;
+      if (j < 0 || j >= n) continue;
+      if (taken[j]) {
+        blocked = true;
+        break;
+      }
+    }
+    if (!blocked) {
+      accepted.push(c.idx);
+      taken[c.idx] = true;
+    }
+  }
+  accepted.sort((a, b) => a - b);
+  return accepted;
+}
+
+/**
  * Find peaks in a 1D signal: indices where |values[i]| exceeds threshold AND is
  * a local maximum within a window of ±minSpacing samples (non-max suppression).
  *
  * Used on the smoothed turning-angle signal to detect corners.
+ *
+ * @deprecated Use `findCornerPeaks` for shape-recognition corner detection.
+ * Retained for callers that need the simpler magnitude-only peak finder.
  */
 export function findPeaks(
   values: readonly number[],

@@ -60,18 +60,24 @@ export function recognizeTriangle(f: ShapeFeatures): number {
   if (turn === 0) return 0;
 
   // If 4 corners, one MUST be much weaker than the others (a true seam
-  // artifact). Two checks together:
-  //   1. smallest < 40% of strongest (rejects most quadrilaterals, but
-  //      borderline rhombuses can creep through at exactly the boundary)
+  // artifact). Three checks together:
+  //   1. smallest < 40% of strongest (rejects most quadrilaterals)
   //   2. top-3 corner-angle sum ≈ 2π (a true triangle's three real corners
   //      account for almost all the closed-shape exterior turn; a rhombus
   //      misclassified as 4-corner has top-3 sum well below 2π).
+  //   3. smallest must be much weaker than 2nd-smallest (the seam is a
+  //      *unique* artifact). Wide pointy rhombi can otherwise sneak through
+  //      because their two obtuse interior angles produce two similar-sized
+  //      small turns — pattern [151°, 127°, 32°, 28°] has 28/151 = 0.185
+  //      (passes #1) but 28/32 = 0.875 (rhombus, not triangle).
   let extraCornerPenalty = 0;
   if (f.cornerCount === 4) {
     const sorted = [...f.cornerAngles].sort((a, b) => b - a);
     if (sorted[3]! >= sorted[0]! * 0.4) return 0;
     const top3Sum = sorted[0]! + sorted[1]! + sorted[2]!;
     if (top3Sum < 2 * Math.PI * 0.85) return 0; // rhombus / parallelogram territory
+    // Smallest must be much weaker than 2nd-smallest (true seam artifact).
+    if (sorted[2]! > 0 && sorted[3]! / sorted[2]! > 0.6) return 0;
     extraCornerPenalty = 0.15;
   }
 
@@ -390,7 +396,12 @@ export function recognizeTrapezoid(f: ShapeFeatures): number {
   // Tighter cR floor than other quads — trapezoid is "the shape with one
   // parallel pair" which makes it dangerously easy to accept wonky 4-corner
   // curves. A real trapezoid has the polygon-typical cR ≥ 0.55.
-  if (f.cornerTurnRatio < 0.55) return 0;
+  // 5-corner case is even pickier: real 5-corner trapezoids run cR ≥ 0.67
+  // (the seam adds a sharp split that boosts the ratio), while wonky
+  // circles with 5 detected kinks land at cR 0.55–0.60. Use 0.62 as the
+  // gate to cleanly reject those circle artifacts.
+  if (f.cornerCount === 4 && f.cornerTurnRatio < 0.55) return 0;
+  if (f.cornerCount === 5 && f.cornerTurnRatio < 0.62) return 0;
 
   // Reject hourglass-style X-cross shapes — those have ≥2 strong positive
   // AND ≥2 strong negative corners (alternating direction across the
@@ -495,10 +506,13 @@ function recognizeRegularPolygon(f: ShapeFeatures, n: number): number {
     const topMinusOneMean = sorted.slice(0, n - 1).reduce((s, a) => s + a, 0) / (n - 1);
     if (sorted[n - 1]! < topMinusOneMean * 0.4) return 0;
     const restMean = sorted.slice(1).reduce((s, a) => s + a, 0) / (n - 1);
-    // Loosened from 1.8 to 1.9 — real hexagons with one corner ~1.84× the
-    // rest were getting rejected, while square-with-artifact patterns
-    // typically run 1.94+ so the higher gate still excludes them.
-    if (restMean > 0 && sorted[0]! / restMean > 1.9) return 0;
+    // Loosened progressively: 1.8 → 1.9 → 2.05. After windowed corner
+    // detection landed (May 2026), real polygons can have one corner
+    // hit 1.94–2.0× the rest because rounded corners get merged into a
+    // single inflated single-sample reading by NMS. Square-with-true-
+    // artifact patterns typically run 2.1+, so the gate still excludes
+    // them while admitting these legitimately-merged-corner polygons.
+    if (restMean > 0 && sorted[0]! / restMean > 2.05) return 0;
   }
 
   // Corner-angle uniformity
@@ -715,11 +729,13 @@ function recognizeArrowAnyDirection(f: ShapeFeatures): number {
   // Concave-indent signature: at least 2 positive AND 2 negative corners
   // ≥45° each. Real arrows have BOTH head shoulders detected as opposite-
   // sign indents (the head is symmetric). A "1 negative + 4 positive"
-  // pattern looks like an over-rotated quad, not an arrow.
+  // pattern looks like an over-rotated quad with a single wobble, not an
+  // arrow — that exact pattern was misclassifying diamonds, trapezoids,
+  // and pentagons as arrows in the regression corpus (May 2026 tuning).
   const sharpThresh = Math.PI / 4; // 45°
   const positives = f.cornerSignedAngles.filter((a) => a > sharpThresh).length;
   const negatives = f.cornerSignedAngles.filter((a) => a < -sharpThresh).length;
-  if (positives < 2 || negatives < 1) return 0;
+  if (positives < 2 || negatives < 2) return 0;
   // Plus the dominant-direction count must clearly exceed the opposite
   // (arrow ≠ hourglass): asymmetric distribution, not 2+2 balance.
   if (Math.min(positives, negatives) >= 2 && Math.max(positives, negatives) <= 3) {

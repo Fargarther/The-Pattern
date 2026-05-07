@@ -112,7 +112,20 @@ export const SRE_TUNING = {
   // intentionally-open shapes (V, arc) as closed; 0.15 is the current balance.
   CLOSURE_DISTANCE_MAX: 0.15,
 
-  CORNER_ANGLE_THRESHOLD: Math.PI / 8,
+  // Corner detection (windowed-peak approach, May 2026):
+  // - RAW: low single-sample floor — anything below is drawing noise.
+  // - WINDOW_SUM: a corner's total turn within ±2 samples must clear this.
+  //   Tuned at ~30° (π/6) so a slightly-rounded octagon corner whose turn
+  //   distributes across 4-5 samples (each 8-12°) still sums to ≥30°.
+  // - MIN_BASELINE_SAMPLES: at least this many of the 4 non-center samples
+  //   in the window must lie below half the peak. Real corners sit on a
+  //   low-magnitude baseline; sustained-moderate-turn curve segments don't.
+  //   Robust to adjacent real corners (only the high-magnitude neighbor
+  //   gets excluded; the rest of the baseline still satisfies the count).
+  CORNER_ANGLE_THRESHOLD: Math.PI / 12,
+  CORNER_WINDOW_SUM_THRESHOLD: Math.PI / 6,
+  CORNER_MIN_BASELINE_SAMPLES: 2,
+  CORNER_WINDOW_HALF_WIDTH: 2,
   CORNER_MIN_SPACING_FRAC: 1 / 12,
   GAUSSIAN_SMOOTH_SIGMA: 2,
 

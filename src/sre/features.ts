@@ -6,7 +6,7 @@ import { SRE_TUNING } from './types.js';
 import {
   computeBbox,
   distance,
-  findPeaks,
+  findCornerPeaks,
   mean,
   reflectionError,
   rotationalError,
@@ -39,15 +39,17 @@ export function extractFeatures(stroke: NormalizedStroke): ShapeFeatures {
   }
 
   // ===== Corner detection =====
-  // Polygon vertices put most of their turn into 1–2 samples. Gaussian
-  // smoothing dilutes those peaks below threshold, so we peak-find directly
-  // on the unsmoothed |angle| signal with aggressive non-max suppression.
+  // Windowed-peak detection: a candidate sample must be a local max above
+  // a low single-sample floor, then pass two more gates — total |angle|
+  // within ±2 samples ≥ ~30°, and peak/window-average concentration ≥ 2.0.
+  // This catches both sharp single-sample corners AND slightly-rounded
+  // corners (where the same total turn spreads across 4-5 samples) while
+  // rejecting sustained-moderate-turn curve segments. See findCornerPeaks
+  // in geometry.ts for the full rationale.
   //
   // For open shapes, suppress the first/last k samples — a stylus touching
   // down or lifting produces erratic direction in the first/last few samples
   // even after 1€ smoothing, which otherwise reads as spurious corners.
-  // Closed shapes don't have this problem (the seam is already handled by
-  // turningAngles' dedup in closed mode).
   const absAngles = angles.map(Math.abs);
   const minSpacing = Math.max(1, Math.floor(n * SRE_TUNING.CORNER_MIN_SPACING_FRAC));
 
@@ -59,11 +61,14 @@ export function extractFeatures(stroke: NormalizedStroke): ShapeFeatures {
     );
   }
 
-  const cornerIndices = findPeaks(
-    cornerInputAngles,
-    SRE_TUNING.CORNER_ANGLE_THRESHOLD,
+  const cornerIndices = findCornerPeaks(cornerInputAngles, {
+    rawThreshold: SRE_TUNING.CORNER_ANGLE_THRESHOLD,
+    windowSumThreshold: SRE_TUNING.CORNER_WINDOW_SUM_THRESHOLD,
+    minBaselineSamples: SRE_TUNING.CORNER_MIN_BASELINE_SAMPLES,
     minSpacing,
-  );
+    isClosed,
+    windowHalfWidth: SRE_TUNING.CORNER_WINDOW_HALF_WIDTH,
+  });
   const cornerAngles = cornerIndices.map((i) => absAngles[i]!);
   const cornerSignedAngles = cornerIndices.map((i) => angles[i]!);
   const cornerCount = cornerIndices.length;
