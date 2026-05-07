@@ -15,6 +15,7 @@ import { computeBbox, type BBox } from './geometry.js';
 import { recognizeMultistroke } from './multistroke.js';
 import { preprocessStrokes } from './preprocessing.js';
 import { recognize } from './recognize.js';
+import { makeOccurrence, type PrimitiveOccurrence } from './spatial-relations.js';
 import type { NormalizedPoint, RecognitionResult, Stroke } from './types.js';
 
 export interface StrokeGroup {
@@ -24,6 +25,34 @@ export interface StrokeGroup {
   bbox: BBox;
 }
 
+/** Classification of a gesture's composite structure per the locked
+ *  Pattern composite contract (memory: project_pattern_composite.md):
+ *    - 1 level (unit alone)               → vanilla unit, no modifier
+ *    - 2 levels (unit + modifier directly) → invalid; modifier needs a wrapper
+ *    - 3 levels (unit + wrapper + modifier) → modifier applied with bonus
+ *
+ *  Plus two structural failure modes:
+ *    - 4+ levels of nesting → over-nested (currently treated as invalid)
+ *    - multiple disjoint roots, or branching at any level → multi-shape
+ */
+export type CompositionKind =
+  | 'unit-only'
+  | 'invalid-2-deep'
+  | 'unit-wrapper-modifier'
+  | 'over-nested'
+  | 'multi-shape'
+  | 'empty';
+
+export interface Composition {
+  kind: CompositionKind;
+  /** Index into `groups` of the outermost shape (the unit), when applicable. */
+  unitIndex?: number;
+  /** Index of the wrapper polygon (3-deep only). */
+  wrapperIndex?: number;
+  /** Index of the innermost modifier source (2-deep or 3-deep). */
+  modifierIndex?: number;
+}
+
 export interface CompositeResult {
   /** All shape groups found, ordered outermost-first (largest bbox first).
    * Single-shape drawings produce a length-1 array. */
@@ -31,11 +60,14 @@ export interface CompositeResult {
     group: StrokeGroup;
     recognition: RecognitionResult;
   }>;
-  /** True if exactly two groups were found AND one is contained in the other. */
+  /** Structured classification per the 3-deep contract. */
+  composition: Composition;
+  /** Legacy field. True if any nesting was detected (1- vs 2/3-deep).
+   *  Maintained for backward compatibility with the original 2-deep UI. */
   isNested: boolean;
-  /** Index of the outer group (in `groups`) when nested. */
+  /** Legacy. Index of the outermost (unit) group when nested; null otherwise. */
   outerIndex: number | null;
-  /** Index of the inner group when nested. */
+  /** Legacy. Index of the innermost (modifier) group when nested; null otherwise. */
   innerIndex: number | null;
 }
 
@@ -230,12 +262,110 @@ function collectAllPoints(g: StrokeGroup): NormalizedPoint[] {
 // Composite recognition
 // ============================================================================
 
+/** Build the containment hierarchy across the recognized groups.
+ *
+ *  Returns a `parentOf` array: parentOf[i] is the index of the SMALLEST
+ *  other group that contains group i, or `null` if i has no container
+ *  ("root"). Smallest-container parenting ensures we get a clean nesting
+ *  chain when multiple ancestors exist (e.g., grandparent contains both
+ *  child and grandchild — child should be parent of grandchild, not the
+ *  grandparent).
+ */
+function buildContainmentParents(
+  groups: readonly { group: StrokeGroup }[],
+): Array<number | null> {
+  const n = groups.length;
+  const parentOf: Array<number | null> = new Array(n).fill(null);
+  for (let i = 0; i < n; i++) {
+    let bestParent: number | null = null;
+    let bestParentArea = Infinity;
+    for (let j = 0; j < n; j++) {
+      if (i === j) continue;
+      if (!isContainedIn(groups[i]!.group, groups[j]!.group)) continue;
+      const area = bboxArea(groups[j]!.group.bbox);
+      if (area < bestParentArea) {
+        bestParentArea = area;
+        bestParent = j;
+      }
+    }
+    parentOf[i] = bestParent;
+  }
+  return parentOf;
+}
+
+/** Classify the recognized groups into a single Composition per the
+ *  3-deep contract. Returns `multi-shape` for any branching or multiple-
+ *  root configurations (handled in a future pass). */
+function classifyComposition(
+  groups: readonly { group: StrokeGroup }[],
+): Composition {
+  if (groups.length === 0) return { kind: 'empty' };
+  if (groups.length === 1) return { kind: 'unit-only', unitIndex: 0 };
+
+  const parentOf = buildContainmentParents(groups);
+
+  // Roots: groups with no parent.
+  const roots: number[] = [];
+  for (let i = 0; i < groups.length; i++) {
+    if (parentOf[i] === null) roots.push(i);
+  }
+
+  // Children of each group.
+  const childrenOf: number[][] = groups.map(() => []);
+  for (let i = 0; i < parentOf.length; i++) {
+    const p = parentOf[i];
+    if (p !== null && p !== undefined) childrenOf[p]!.push(i);
+  }
+
+  // Multiple roots → multi-shape (e.g., two units side by side).
+  if (roots.length !== 1) return { kind: 'multi-shape' };
+  const root = roots[0]!;
+
+  // Walk the chain from root downward. If any node has more than one
+  // child, that's branching — also `multi-shape` for now.
+  const chain: number[] = [root];
+  let cur = root;
+  while (true) {
+    const kids = childrenOf[cur]!;
+    if (kids.length === 0) break;
+    if (kids.length > 1) return { kind: 'multi-shape' };
+    cur = kids[0]!;
+    chain.push(cur);
+  }
+
+  switch (chain.length) {
+    case 1:
+      return { kind: 'unit-only', unitIndex: chain[0] };
+    case 2:
+      return {
+        kind: 'invalid-2-deep',
+        unitIndex: chain[0],
+        modifierIndex: chain[1],
+      };
+    case 3:
+      return {
+        kind: 'unit-wrapper-modifier',
+        unitIndex: chain[0],
+        wrapperIndex: chain[1],
+        modifierIndex: chain[2],
+      };
+    default:
+      return { kind: 'over-nested' };
+  }
+}
+
 /** Run the full composite pipeline on a list of strokes drawn within one
  * gesture window. Returns recognition results for each detected shape group
- * plus nesting information. */
+ * plus the structured composition classification. */
 export function recognizeComposite(strokes: readonly Stroke[]): CompositeResult {
   if (strokes.length === 0) {
-    return { groups: [], isNested: false, outerIndex: null, innerIndex: null };
+    return {
+      groups: [],
+      composition: { kind: 'empty' },
+      isNested: false,
+      outerIndex: null,
+      innerIndex: null,
+    };
   }
 
   const groups = groupStrokes(strokes);
@@ -272,22 +402,52 @@ export function recognizeComposite(strokes: readonly Stroke[]): CompositeResult 
     return { group, recognition: recognize(features, { cloud: norm.points }) };
   });
 
-  // Sort largest bbox first so groups[0] is the natural "outer" candidate
+  // Sort largest bbox first so groups[0] is the natural "outer" candidate.
   recognized.sort((a, b) => bboxArea(b.group.bbox) - bboxArea(a.group.bbox));
 
-  // Detect nesting only for the simplest case: exactly 2 groups, smaller
-  // contained in larger. The full hierarchical case (multiple inner glyphs)
-  // is later work.
+  // Build the structured composition.
+  const composition = classifyComposition(recognized);
+
+  // Legacy back-compat fields. `isNested` fires for any of the nested
+  // kinds (2-deep, 3-deep, over-nested) so existing UI code that just
+  // checks isNested keeps working. outerIndex/innerIndex map to
+  // unit/modifier ends of the chain when applicable.
   let isNested = false;
   let outerIndex: number | null = null;
   let innerIndex: number | null = null;
-  if (recognized.length === 2 && isContainedIn(recognized[1]!.group, recognized[0]!.group)) {
+  if (
+    composition.kind === 'invalid-2-deep' ||
+    composition.kind === 'unit-wrapper-modifier' ||
+    composition.kind === 'over-nested'
+  ) {
     isNested = true;
-    outerIndex = 0;
-    innerIndex = 1;
+    outerIndex = composition.unitIndex ?? null;
+    innerIndex = composition.modifierIndex ?? null;
   }
 
-  return { groups: recognized, isNested, outerIndex, innerIndex };
+  return { groups: recognized, composition, isNested, outerIndex, innerIndex };
+}
+
+/** Convert a CompositeResult into PrimitiveOccurrence[] suitable for the
+ *  composition engine. Skips groups whose recognition returned no shape.
+ *  Each occurrence's bbox + centroid + resampledPoints come from the raw
+ *  stroke points (canvas space) so spatial relations across primitives
+ *  share a common coordinate system. */
+export function toPrimitiveOccurrences(
+  result: CompositeResult,
+): PrimitiveOccurrence[] {
+  const out: PrimitiveOccurrence[] = [];
+  for (let i = 0; i < result.groups.length; i++) {
+    const g = result.groups[i]!;
+    const shape = g.recognition.shape;
+    if (!shape) continue;
+    const points: NormalizedPoint[] = [];
+    for (const s of g.group.strokes) {
+      for (const p of s.points) points.push({ x: p.x, y: p.y });
+    }
+    out.push(makeOccurrence(shape, points, i));
+  }
+  return out;
 }
 
 // Re-export BBox for convenience to UI code.

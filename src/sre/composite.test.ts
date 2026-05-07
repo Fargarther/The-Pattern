@@ -131,3 +131,89 @@ describe('recognizeComposite', () => {
     expect(r.isNested).toBe(false);
   });
 });
+
+describe('Composition (3-deep contract)', () => {
+  it('classifies an empty input as kind "empty"', () => {
+    const r = recognizeComposite([]);
+    expect(r.composition.kind).toBe('empty');
+  });
+
+  it('classifies a single shape as kind "unit-only"', () => {
+    const r = recognizeComposite([squareStroke(0, 0, 80)]);
+    expect(r.composition.kind).toBe('unit-only');
+    expect(r.composition.unitIndex).toBe(0);
+    expect(r.composition.wrapperIndex).toBeUndefined();
+    expect(r.composition.modifierIndex).toBeUndefined();
+  });
+
+  it('classifies "shape inside shape" as kind "invalid-2-deep" (modifier without wrapper)', () => {
+    const square = squareStroke(0, 0, 100);
+    const triangle = triangleStroke(0, 0, 30);
+    const r = recognizeComposite([square, triangle]);
+    expect(r.composition.kind).toBe('invalid-2-deep');
+    expect(r.composition.unitIndex).toBe(0);
+    expect(r.composition.modifierIndex).toBe(1);
+    expect(r.composition.wrapperIndex).toBeUndefined();
+  });
+
+  it('classifies a 3-deep chain as kind "unit-wrapper-modifier"', () => {
+    const outer = squareStroke(0, 0, 200);   // unit
+    const middle = squareStroke(0, 0, 100);  // wrapper
+    const inner = triangleStroke(0, 0, 30);  // modifier
+    const r = recognizeComposite([outer, middle, inner]);
+    expect(r.composition.kind).toBe('unit-wrapper-modifier');
+    expect(r.composition.unitIndex).toBe(0);
+    expect(r.composition.wrapperIndex).toBe(1);
+    expect(r.composition.modifierIndex).toBe(2);
+  });
+
+  it('classifies branching (one outer with two inners) as "multi-shape"', () => {
+    const outer = squareStroke(0, 0, 200);
+    const innerA = triangleStroke(-60, 0, 25); // left inner
+    const innerB = triangleStroke(60, 0, 25);  // right inner — same level as A
+    const r = recognizeComposite([outer, innerA, innerB]);
+    expect(r.composition.kind).toBe('multi-shape');
+  });
+
+  it('classifies multiple disjoint roots as "multi-shape"', () => {
+    const left = squareStroke(-200, 0, 50);
+    const right = triangleStroke(200, 0, 50);
+    const r = recognizeComposite([left, right]);
+    expect(r.composition.kind).toBe('multi-shape');
+  });
+
+  it('classifies a 4-deep chain as "over-nested"', () => {
+    const a = squareStroke(0, 0, 400);
+    const b = squareStroke(0, 0, 200);
+    const c = squareStroke(0, 0, 100);
+    const d = triangleStroke(0, 0, 25);
+    const r = recognizeComposite([a, b, c, d]);
+    expect(r.composition.kind).toBe('over-nested');
+    // Legacy fields still populated.
+    expect(r.isNested).toBe(true);
+  });
+});
+
+describe('toPrimitiveOccurrences', () => {
+  it('produces an occurrence per recognized group', async () => {
+    const { toPrimitiveOccurrences } = await import('./composite.js');
+    const square = squareStroke(0, 0, 100);
+    const triangle = triangleStroke(0, 0, 30);
+    const r = recognizeComposite([square, triangle]);
+    const occurrences = toPrimitiveOccurrences(r);
+    expect(occurrences).toHaveLength(2);
+    expect(occurrences[0]!.classId).toBe('square');
+    expect(occurrences[1]!.classId).toBe('triangle');
+    // bbox + centroid in canvas coords (not normalized).
+    expect(occurrences[0]!.bbox.w).toBeGreaterThan(0);
+    expect(occurrences[1]!.bbox.w).toBeGreaterThan(0);
+    expect(occurrences[0]!.index).toBe(0);
+    expect(occurrences[1]!.index).toBe(1);
+  });
+
+  it('skips groups with no recognized shape', async () => {
+    const { toPrimitiveOccurrences } = await import('./composite.js');
+    const r = recognizeComposite([]);
+    expect(toPrimitiveOccurrences(r)).toEqual([]);
+  });
+});
