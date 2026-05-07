@@ -79,9 +79,14 @@ let dpr = window.devicePixelRatio || 1;
 let activePointerId: number | null = null;
 let drawingPoints: RawPoint[] = [];
 
-// Strokes collected since the last commit. The composite parser runs over
-// this buffer when the user pauses (1.5 s) or hits the commit button.
+// strokeBuffer holds strokes drawn since the last commit (rendered as
+// faint ghosts before recognition fires). committedStrokes accumulates
+// every stroke that has been committed since the last "clear" — each
+// auto-commit appends to it and re-runs recognition over the full pile.
+// This is what keeps previously-recognized shapes on-screen when the
+// user starts drawing the next one.
 let strokeBuffer: Stroke[] = [];
+let committedStrokes: Stroke[] = [];
 let commitTimer: number | null = null;
 
 interface GroupRender {
@@ -313,13 +318,19 @@ function commitBuffer(): void {
   }
   if (strokeBuffer.length === 0) return;
 
+  // Accumulate: append the buffered (un-committed) strokes onto the
+  // committed pile, then re-run recognition across EVERYTHING. Previous
+  // shapes stay on-screen; the new gesture just becomes another group
+  // in the composite. Clear button is the only way to wipe the pile.
+  committedStrokes = [...committedStrokes, ...strokeBuffer];
+  strokeBuffer = [];
+
   const t0 = performance.now();
-  const composite = recognizeComposite(strokeBuffer);
+  const composite = recognizeComposite(committedStrokes);
   const groups = composite.groups.map((g) => processGroup(g.group.strokes));
   const elapsed = performance.now() - t0;
 
   lastResult = { composite, groups, runtimeMs: elapsed };
-  strokeBuffer = [];
   saveBtn.disabled = false;
   saveTemplateBtn.disabled = false;
   setSaveStatus('', 'idle');
@@ -376,15 +387,12 @@ canvas.addEventListener('pointerdown', (e: PointerEvent) => {
       pointerType: asPointerType(e.pointerType),
     },
   ];
-  // Starting a new stroke cancels any pending commit and clears the previous
-  // result so the user sees the new gesture cleanly.
+  // Starting a new stroke cancels any pending commit timer (so we don't
+  // commit mid-gesture). Previously-committed shapes stay on screen;
+  // the next commit will accumulate this new stroke onto them.
   if (commitTimer !== null) {
     window.clearTimeout(commitTimer);
     commitTimer = null;
-  }
-  if (lastResult !== null) {
-    lastResult = null;
-    strokeBuffer = [];
   }
   render();
 });
@@ -422,11 +430,11 @@ function endStroke(e: PointerEvent): void {
       pointerType: drawingPoints[0]!.pointerType ?? 'mouse',
     };
     strokeBuffer.push(stroke);
-    // Manual recognition only — user clicks 🔍 when ready. Auto-commit
-    // timer was tried twice and removed; recognition firing mid-iteration
-    // disrupts the template-collection workflow.
     recognizeBtn.disabled = false;
     saveTemplateBtn.disabled = false;
+    // Auto-commit after a pause. New strokes accumulate onto the
+    // existing composite — previous shapes stay visible.
+    scheduleCommit();
   }
   drawingPoints = [];
   render();
@@ -438,6 +446,7 @@ canvas.addEventListener('pointercancel', endStroke);
 clearBtn.addEventListener('click', () => {
   drawingPoints = [];
   strokeBuffer = [];
+  committedStrokes = [];
   if (commitTimer !== null) {
     window.clearTimeout(commitTimer);
     commitTimer = null;
@@ -449,7 +458,7 @@ clearBtn.addEventListener('click', () => {
   setSaveStatus('', 'idle');
   updateStats([
     'draw something',
-    'manual mode — 🔍 to recognize, 📌 to save as template',
+    `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — clear to wipe`,
     `templates loaded: ${getRuntimeTemplateCount()}`,
   ]);
   render();
@@ -652,7 +661,7 @@ async function loadRuntimeTemplates(): Promise<void> {
     setRuntimeTemplates(built);
     updateStats([
       'draw something',
-      'manual mode — 🔍 to recognize, 📌 to save as template',
+      `auto-commits ${(COMMIT_DELAY_MS / 1000).toFixed(1)}s after pause — clear to wipe`,
       `templates loaded: ${getRuntimeTemplateCount()}`,
     ]);
   } catch {
