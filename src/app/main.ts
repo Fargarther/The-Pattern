@@ -257,29 +257,27 @@ function render(): void {
     drawInkStroke(s.points, COLOR_RAW_FAINT, 4);
   }
 
-  // After commit: render each recognized group's canonical form.
+  // After commit: ALWAYS render what the user actually drew (canonical
+  // snap disabled). This is the diagnostic mode — Alex needs to see his
+  // own stroke alongside the recognition label so he can decide whether
+  // to save the gesture as a new sample or template. Inner glyphs get a
+  // distinct color so nested composites still read at a glance.
   if (lastResult) {
     for (let i = 0; i < lastResult.groups.length; i++) {
       const g = lastResult.groups[i]!;
       const isInner =
         lastResult.composite.isNested && i === lastResult.composite.innerIndex;
-      const color = isInner ? COLOR_INNER : COLOR_SNAPPED;
+      const color = isInner ? COLOR_INNER : COLOR_RAW;
 
       drawBbox(g.bbox, COLOR_BBOX);
 
-      if (g.canonical) {
-        if (g.canonical.closed) {
-          drawClosedPolygon(g.canonical.points, color, 2.5);
-        } else {
-          drawPolyline(g.canonical.points, color, 2.5);
-        }
-      } else {
-        // No recognition — keep the raw rendering so the user sees what
-        // they drew.
-        const rawStroke = lastResult.composite.groups[i]!.group.strokes[0];
-        if (rawStroke) {
-          drawInkStroke(rawStroke.points, COLOR_RAW, 5);
-        }
+      // Draw raw user input regardless of recognition outcome.
+      for (const s of lastResult.composite.groups[i]!.group.strokes) {
+        drawInkStroke(s.points, color, 5);
+      }
+      // Show corner detection only when no shape was matched — helps debug
+      // why a drawing failed to classify.
+      if (!g.recognition.shape) {
         drawCornerMarkers(g.cornerPositions, COLOR_CORNER);
       }
     }
