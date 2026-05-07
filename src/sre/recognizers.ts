@@ -42,9 +42,13 @@ export function recognizeTriangle(f: ShapeFeatures): number {
   // start point sits on a side and creates a seam artifact.
   if (f.cornerCount < 3 || f.cornerCount > 4) return 0;
 
-  // Polygon-like (turn concentrated at corners). Rejects circles whose
-  // 3 detected kinks happen to look like triangle corners by count alone.
-  if (f.cornerTurnRatio < 0.40) return 0;
+  // Polygon-like (turn concentrated at corners). Rejects:
+  //   - Circles whose 3 detected kinks happen to look like triangle
+  //     corners by count alone (those run cR 0.32-0.40).
+  //   - Curved-side 3-corner shapes like a shield with one sharp bottom
+  //     point + smooth top (those run cR 0.40-0.45). Real triangles run
+  //     cR 0.50+ from validated regression samples.
+  if (f.cornerTurnRatio < 0.45) return 0;
 
   // Cap on aspect ratio — extremely elongated shapes (rectangles, lozenges)
   // shouldn't pass through the triangle recognizer.
@@ -152,6 +156,12 @@ export function recognizeSquare(f: ShapeFeatures): number {
   const positives = f.cornerSignedAngles.filter((a) => a > sharpThresh).length;
   const negatives = f.cornerSignedAngles.filter((a) => a < -sharpThresh).length;
   if (positives >= 2 && negatives >= 2) return 0;
+
+  // Total-absolute cap: real squares run ~1.0-1.5 × 2π. Pentagrams hit
+  // 2.5+ × 2π even when traversed with all-same-sign corners. Cap at
+  // 1.8×2π — comfortable headroom for wobbly squares but rejects
+  // pentagram-style high-winding shapes.
+  if (f.totalAbsoluteAngle > 1.8 * 2 * Math.PI) return 0;
 
   // Square = aspect ≈ 1. Tolerance widened to 0.4 after validation: real
   // human squares drift up to aspect 1.23 routinely.
@@ -413,13 +423,20 @@ export function recognizeTrapezoid(f: ShapeFeatures): number {
   if (absSigned < 1.5 * Math.PI) return 0; // 270° lower
   if (absSigned > 1.4 * 2 * Math.PI) return 0; // 504° upper — pentagrams hit ~720°
 
-  // Reject hourglass-style X-cross shapes — those have ≥2 strong positive
-  // AND ≥2 strong negative corners (alternating direction across the
-  // self-intersection). Real trapezoids are convex: all corners same sign.
+  // Real trapezoid is convex — all 4 (or 5-with-seam) corners turn the
+  // SAME direction around the perimeter. Reject any shape with both
+  // strong-positive AND strong-negative corners (>60° each). Catches
+  // hourglass-style X-crosses AND pentagrams with one reversed-direction
+  // corner (the {5/2}-with-imperfect-traversal case Alex's drawings hit).
   const sharpThresh = Math.PI / 3;
   const positives = f.cornerSignedAngles.filter((a) => a > sharpThresh).length;
   const negatives = f.cornerSignedAngles.filter((a) => a < -sharpThresh).length;
-  if (positives >= 2 && negatives >= 2) return 0;
+  if (positives >= 1 && negatives >= 1) return 0;
+
+  // Total-absolute cap: real trapezoids run 1.1-2.4×2π; pentagrams hit
+  // 2.5+ × 2π regardless of how their signed total cancels. Belt-and-
+  // suspenders for the all-same-sign pentagram case.
+  if (f.totalAbsoluteAngle > 2.5 * 2 * Math.PI) return 0;
 
   const q = selectQuad(f);
   if (!q) return 0;
