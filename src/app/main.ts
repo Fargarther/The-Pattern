@@ -34,7 +34,7 @@ import {
 import { detectOs, type CaptureContext } from '../sre/template-schema.js';
 import type { ShapeName } from '../sre/types.js';
 
-const KNOWN_SHAPE_NAMES: ReadonlySet<string> = new Set<ShapeName>([
+const KNOWN_SHAPE_NAMES_LIST: readonly ShapeName[] = [
   // Geometric units
   'triangle', 'circle', 'square', 'rectangle', 'rhombus', 'diamond', 'trapezoid',
   'pentagon', 'hexagon', 'heptagon', 'octagon', 'nonagon', 'decagon',
@@ -48,7 +48,16 @@ const KNOWN_SHAPE_NAMES: ReadonlySet<string> = new Set<ShapeName>([
   // Modifier sources (inner-only)
   'flame', 'wave', 'feather', 'snowflake', 'crescent', 'sun', 'skull',
   'hourglass', 'anchor', 'heart', 'spiral',
-]);
+];
+// Case-insensitive lookup — the user can type "arrowdown" or "ArrowDown"
+// and we resolve to the canonical `arrowDown` (matters for camelCase
+// names like plusSign + arrowDown).
+const KNOWN_SHAPE_LOOKUP: ReadonlyMap<string, ShapeName> = new Map(
+  KNOWN_SHAPE_NAMES_LIST.map((n) => [n.toLowerCase(), n] as const),
+);
+const KNOWN_SHAPE_NAMES: ReadonlySet<string> = new Set<ShapeName>(KNOWN_SHAPE_NAMES_LIST);
+// (Set kept for the runtime-template loader's filter — that one already
+// has canonical strings from the JSON files, no normalization needed.)
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d');
@@ -519,15 +528,18 @@ saveBtn.addEventListener('click', () => {
 });
 
 async function saveCurrentTemplate(): Promise<void> {
-  const label = labelEl.value.trim().toLowerCase();
-  if (!label) {
+  const rawLabel = labelEl.value.trim();
+  if (!rawLabel) {
     labelEl.focus();
     setSaveStatus('label first', 'error');
     return;
   }
-  if (!KNOWN_SHAPE_NAMES.has(label)) {
+  // Case-insensitive lookup: "arrowdown" / "ArrowDown" / "arrowDown" all
+  // resolve to the canonical `arrowDown`. Persist with canonical casing.
+  const label = KNOWN_SHAPE_LOOKUP.get(rawLabel.toLowerCase());
+  if (!label) {
     labelEl.focus();
-    setSaveStatus(`"${label}" is not a known shape`, 'error');
+    setSaveStatus(`"${rawLabel}" is not a known shape`, 'error');
     return;
   }
   // Pull strokes from either the buffer (no recognition has run yet) or
