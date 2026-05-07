@@ -60,27 +60,56 @@ export function recognize(
     .filter((m) => m.confidence > 0)
     .sort((a, b) => b.confidence - a.confidence);
 
+  // ===== $Q pass — always run when a cloud is available =====
+  // Originally $Q was fallback-only, but that made rule-based wins on
+  // shapes like shield (matches circle's gates) or shuriken (matches
+  // plus's gates) impossible to override even when the user had real
+  // templates for the actual shape. We now always score $Q so the
+  // dispatcher below can prefer it when rule-based is borderline AND $Q
+  // is confident.
+  let qMatch: QMatch | null = null;
+  if (cloud && cloud.length >= 8) {
+    qMatch = recognizeQ(cloud, getQTemplates());
+  }
+  const ruleTop = ruleMatches[0] ?? null;
+
+  // ===== Dispatcher =====
+  // If rule-based is dominant (≥0.75), it wins outright — these are the
+  // unambiguous geometric cases (clean square, hexagon, etc.) where
+  // template-matching shouldn't second-guess.
+  const RULE_DOMINANT_THRESHOLD = 0.75;
+  // If $Q is confident (≥0.55) AND rule-based isn't dominant, $Q wins.
+  // This is the shield/shuriken override path — when the user has
+  // template support for the actual shape but rule-based is matching a
+  // topologically-similar but wrong class.
+  const Q_OVERRIDE_THRESHOLD = 0.55;
   if (
-    ruleMatches.length > 0 &&
-    ruleMatches[0]!.confidence >= SRE_TUNING.CONFIDENCE_THRESHOLD
+    qMatch &&
+    qMatch.confidence >= Q_OVERRIDE_THRESHOLD &&
+    (!ruleTop || ruleTop.confidence < RULE_DOMINANT_THRESHOLD)
   ) {
+    const ruleAlts = ruleMatches.slice(0, 3);
     return {
-      shape: ruleMatches[0]!.shape,
-      confidence: ruleMatches[0]!.confidence,
+      shape: qMatch.template.name as ShapeName,
+      confidence: qMatch.confidence,
+      features,
+      alternativeMatches: ruleAlts,
+    };
+  }
+
+  // Normal rule-based path: top match above the standard confidence
+  // threshold wins.
+  if (ruleTop && ruleTop.confidence >= SRE_TUNING.CONFIDENCE_THRESHOLD) {
+    return {
+      shape: ruleTop.shape,
+      confidence: ruleTop.confidence,
       features,
       alternativeMatches: ruleMatches.slice(1, 4),
     };
   }
 
-  // ===== $Q fallback for iconic glyphs =====
-  // Only runs when rule-based recognition didn't claim the shape with
-  // sufficient confidence. The cloud must be available; if we only got
-  // ShapeFeatures (no original stroke), there's nothing to template-match.
-  let qMatch: QMatch | null = null;
-  if (cloud && cloud.length >= 8) {
-    qMatch = recognizeQ(cloud, getQTemplates());
-  }
-
+  // $Q fallback: rule-based produced nothing useful, $Q is at least
+  // marginally confident.
   if (qMatch && qMatch.confidence >= Q_CONFIDENCE_THRESHOLD) {
     const altMatches = ruleMatches.slice(0, 3);
     return {

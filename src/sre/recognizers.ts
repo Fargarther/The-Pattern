@@ -649,6 +649,18 @@ export function recognizePlusSign(f: ShapeFeatures): number {
   const turns = f.totalAbsoluteAngle / (2 * Math.PI);
   if (turns < 2.3 || turns > 3.7) return 0;
 
+  // Outer-corner sharpness — distinguishes plus from shuriken (4-point
+  // star). Plus's 4 outer corners are right angles (~90° turn ≈ π/2);
+  // shuriken's outer tips are MUCH sharper (~135°+ turn). The 4 strongest
+  // corners by magnitude — both shapes' outer corners — should average
+  // ≤ ~110° (well under shuriken's typical 130°+).
+  const sortedCornerAngles = [...f.cornerAngles].sort((a, b) => b - a);
+  const top4 = sortedCornerAngles.slice(0, 4);
+  if (top4.length === 4) {
+    const avgTop4 = top4.reduce((s, a) => s + a, 0) / 4;
+    if (avgTop4 > (110 * Math.PI) / 180) return 0; // 110° in radians
+  }
+
   return 0.8;
 }
 
