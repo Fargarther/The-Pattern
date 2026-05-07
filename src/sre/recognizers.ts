@@ -403,12 +403,15 @@ export function recognizeTrapezoid(f: ShapeFeatures): number {
   if (f.cornerCount === 4 && f.cornerTurnRatio < 0.55) return 0;
   if (f.cornerCount === 5 && f.cornerTurnRatio < 0.62) return 0;
 
-  // Reject self-intersecting shapes (pentagrams, X-crosses): a real
-  // trapezoid is traversed once with totalSignedAngle ≈ ±2π. Self-
-  // intersecting shapes have signed turns cancel out near zero. 1.5π
-  // (270°) is comfortable headroom — single-traverse polygons clear it
-  // easily; pentagrams sit at ~0.
-  if (Math.abs(f.totalSignedAngle) < 1.5 * Math.PI) return 0;
+  // Self-traversal check — a real trapezoid winds the path around its
+  // boundary EXACTLY ONCE, so |totalSignedAngle| ≈ 2π. Reject both:
+  //   - Hourglass-style (signed ≈ 0, signs cancel at the X-cross)
+  //   - Pentagram-style (signed ≈ ±4π — pentagrams are {5/2} star polygons
+  //     that wind around the center TWICE in the same rotational direction)
+  // Real trapezoid sits at ~6.28; bound to [4.71, 8.80] keeps it clean.
+  const absSigned = Math.abs(f.totalSignedAngle);
+  if (absSigned < 1.5 * Math.PI) return 0; // 270° lower
+  if (absSigned > 1.4 * 2 * Math.PI) return 0; // 504° upper — pentagrams hit ~720°
 
   // Reject hourglass-style X-cross shapes — those have ≥2 strong positive
   // AND ≥2 strong negative corners (alternating direction across the
